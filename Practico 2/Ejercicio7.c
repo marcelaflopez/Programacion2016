@@ -96,7 +96,7 @@ void enMinusculas(listaChar lista, int tam){
 
 /*
 	Devuelve la cantidad de palabras, si se ingresaron solo espacios en blanco devuelve 0.
-	Espera una cadena sin espacios en blanco adelante o al final.
+	Espera una lista sin espacios en blanco adelante o al final.
 	Ejemplos:
 		cantidadPalabras(["a", "b", " ","c"], 4) -> 2
 		cantidadPalabras(["a", "b", "c"], 3) -> 1

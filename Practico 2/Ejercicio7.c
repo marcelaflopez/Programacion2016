@@ -2,7 +2,7 @@
 #include <ctype.h>
 /*
 Autor: Fernando Orquera
-Año: 2017 
+AÃ±o: 2017 
 */
 
 typedef char listaChar[50];
@@ -33,10 +33,10 @@ int main() {
 void cargarLista(listaChar lista, int *tam){
 	int i;
 	
-	printf("Ingrese el tama%co de la lista:\n", 164); /*Estoy agrendo el caracter ñ*/
+	printf("Ingrese el tama%co de la lista:\n", 164); /*Estoy agrendo el caracter Ã±*/
 	scanf("%d", tam);
 	for(i = 1; i <= *tam; i++){
-		printf("Ingrese %d %c caracter:", i, 167); /*Estoy agregando el caracter º*/
+		printf("Ingrese %d %c caracter:", i, 167); /*Estoy agregando el caracter Âº*/
 		fflush(stdin);
 		scanf("%c", &lista[i]);
 	}
@@ -67,7 +67,7 @@ void trimLista(listaChar lista, int *tam){
 
 /*
 	Elimina un caracter de la lista.
-	No reduce el tamaño.
+	No reduce el tamaÃ±o.
 	Ejemplos:
 		eliminarCaracter(["a", "b", "c"], 3, 1) -> (["b", "c", "c"])
 		eliminarCaracter(["a", "b", "c"], 3, 2) -> (["a", "c", "c"])
@@ -96,9 +96,10 @@ void enMinusculas(listaChar lista, int tam){
 
 /*
 	Devuelve la cantidad de palabras, si se ingresaron solo espacios en blanco devuelve 0.
+	Espera una cadena sin espacios en blanco adelante o al final.
 	Ejemplos:
 		cantidadPalabras(["a", "b", " ","c"], 4) -> 2
-		cantidadPalabras([" ", " ", " "], 3) -> 0
+		cantidadPalabras(["a", "b", "c"], 3) -> 1
 */
 int cantidadPalabras(listaChar lista, int tam){
 	int i, cantidad;

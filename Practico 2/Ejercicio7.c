@@ -54,8 +54,7 @@ void trimLista(listaChar lista, int *tam){
 	i = 1;
 	while(lista[i] == ' ' && i <= *tam){
 		eliminarCaracter(lista, *tam, i);
-		*tam = *tam - 1;
-		i++;
+		*tam = *tam - 1;		
 	}
 	i = *tam;
 	while(lista[i] == ' ' && i >= 1){

@@ -9,29 +9,33 @@ typedef int listaInt[50];
 
 void cargarLista(listaInt lista, int *tam);
 float promedioLista(listaInt lista, int tam);
-int menorLista(listaInt lista, int tam);
-int mayorLista(listaInt lista, int tam);
+int mayorLista(listaInt lista, int tam, float promedio);
 
 int main() {
 	listaInt lista;
 	int tam;
+	float promedio;
 	
 	cargarLista(lista, &tam);
-	printf("El promedio de la lista: %.2f\n", promedioLista(lista, tam));
-	printf("La mayor edad es: %d\n", mayorLista(lista, tam));
-	printf("La menor edad es: %d\n", menorLista(lista, tam));
+	promedio = promedioLista(lista, tam);
+	printf("El promedio de la lista: %.2f\n", promedio);
+	printf("La mayor edad que es menor al promedio es: %d\n", mayorLista(lista, tam, promedio));
+	
 	return 0;
 }
 
 void cargarLista(listaInt lista, int *tam){
-	int i;
+	int i, op;
 	
-	printf("Ingrese el tama%co de la lista:\n", 164); /*Estoy agrendo el caracter ñ*/
-	scanf("%d", tam);
-	for(i = 1; i <= *tam; i++){
+	i = 1;
+	do{
 		printf("Ingrese %d %c edad:", i, 167); /*Estoy agregando el caracter º*/
 		scanf("%d", &lista[i]);
-	}
+		i++;
+		printf("Desea ingresar otro? 1-SI 0-NO:\n");
+		scanf("%d", &op);
+	}while(op != 0);
+	*tam = i - 1;
 }
 
 float promedioLista(listaInt lista, int tam){
@@ -45,28 +49,22 @@ float promedioLista(listaInt lista, int tam){
 	return sum / tam;
 }
 
-int menorLista(listaInt lista, int tam){
-	int menor;
-	int i;
-	
-	menor = lista[1];
-	for(i = 2; i <= tam; i++){
-		if(lista[i] < menor){
-			menor = lista[i];
-		} 
-	}
-	
-	return menor;
-}
 
-int mayorLista(listaInt lista, int tam){
-	int mayor;
-	int i;
+int mayorLista(listaInt lista, int tam, float promedio){
+	int mayor, band;
+	int i;	
 	
-	mayor = lista[1];
-	for(i = 2; i <= tam; i++){
-		if(lista[i] > mayor){
-			mayor = lista[i];
+	band = 0;
+	for(i = 1; i <= tam; i++){
+		if(lista[i] < promedio){
+			if(band != 0){
+				if(lista[i] > mayor){
+					mayor = lista[i];
+				}
+			}else{
+				mayor = lista[i];
+				band = 1;
+			}		
 		} 
 	}
 	

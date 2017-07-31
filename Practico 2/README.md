@@ -5,7 +5,7 @@
 <b>Ejercicio 2:</b> Dada una lista con las edades de deportistas, se necesita informar la edad promedio de los deportistas de la lista; y cual es la mayor edad que es menor al promedio.
 <br>
 
-<b>Ejercicio 3:</b> Dada una lista de números enteros y dos valores enteros, A y B. Se pide informar cuántos elementos de la lista son sólo múltiplo de A y cuántos son múltiplos sólo de B.
+<b>Ejercicio 3:</b> Dada una lista de números enteros y dos valores enteros, A y B. Se pide informar cuántos elementos de la lista son sólo divisores de A y cuántos son divisores sólo de B.
 <br>
 
 <b>Ejercicio 4:</b> Dados N números enteros, se desea calcular el promedio de los que terminan en 0 o en 1, el promedio de los que terminan en 2 o en 3, el promedio de los que terminan en 4 o en 5 y así sucesivamente hasta el promedio de los que terminan en 8 o en 9.

@@ -2,7 +2,7 @@
 <br>Nota: Para que una forma sea un triangulo, todos los lados tienen que ser mayor que cero y la suma de dos lados cualquiera debe ser mayor o igual que el tercer lado.
 <br>
 
-<b>Ejercicio 2:</b> Dada una lista con las edades de N deportistas y se necesita informar la edad promedio de los deportistas de la lista; cuál es la menor y mayor edad ingresada.
+<b>Ejercicio 2:</b> Dada una lista con las edades de deportistas, se necesita informar la edad promedio de los deportistas de la lista; y cual es la mayor edad que es menor al promedio.
 <br>
 
 <b>Ejercicio 3:</b> Dada una lista de números enteros y dos valores enteros, A y B. Se pide informar cuántos elementos de la lista son sólo múltiplo de A y cuántos son múltiplos sólo de B.

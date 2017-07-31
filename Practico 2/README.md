@@ -1,5 +1,5 @@
-<b>Ejercicio 1:</b> Dados tres números naturales que representan los ángulos internos de un triángulo, se pide determinar si el triángulo es Rectángulo (tiene un ángulo recto, de 90º), Obtusángulo (tiene un ángulo obtuso, más de 90º) o Acutángulo (tiene tres ángulos agudos, menos de 90º).
-<br>Nota: Se debe chequear que la suma de los ángulos interiores sea 180° para procesar el pedido.
+<b>Ejercicio 1:</b> Dados tres números naturales que representan la longitud de los lados de un triángulo, se pide determinar si el triángulo es Equilatero (los tres lados son iguales), Isosceles (tiene dos lados iguales) o Escaleno (Todos los lados son diferentes).
+<br>Nota: Para que una forma sea un triangulo, todos los lados tienen que ser mayor que cero y la suma de dos lados cualquiera debe ser mayor o igual que el tercer lado.
 <br>
 
 <b>Ejercicio 2:</b> Dada una lista con las edades de N deportistas y se necesita informar la edad promedio de los deportistas de la lista; cuál es la menor y mayor edad ingresada.

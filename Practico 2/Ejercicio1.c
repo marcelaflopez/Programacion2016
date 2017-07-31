@@ -10,17 +10,17 @@ int main() {
 		angulo2 = cargarAngulo();
 		angulo3 = cargarAngulo();
 		
-		if(angulo1 + angulo2 + angulo3 != 180){
-			printf("La suma de los angulos internos tiene que ser 180 grados!\n");
+		if(angulo1 + angulo2 < angulo3 && angulo3 + angulo2 < angulo1 && angulo1 + angulo3 < angulo2){
+			printf("La suma de dos lados cualquieras tiene que ser mayor o igual al tercer lado!\n");
 		}
-	}while(angulo1 + angulo2 + angulo3 != 180);
+	}while(angulo1 + angulo2 < angulo3 && angulo3 + angulo2 < angulo1 && angulo1 + angulo3 < angulo2);
 	
-	if(angulo1 > 90 || angulo2 > 90 || angulo3 > 90){
-		printf("El triangulo es obtusangolo\n");
-	}else if(angulo1 == 90 || angulo2 == 90 || angulo3 == 90){
-		printf("El triangulo es rectangulo\n");
+	if(angulo1 != angulo2 && angulo2 != angulo3 && angulo1 != angulo3 ){
+		printf("El triangulo es escaleno\n");
+	}else if(angulo1 == angulo2 && angulo2 == angulo3){
+		printf("El triangulo es equilatero\n");
 	}else{
-		printf("El triangulo es acutangolo\n");
+		printf("El triangulo es isosceles\n");
 	}
 	
 	return 0;

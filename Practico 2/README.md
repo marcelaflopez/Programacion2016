@@ -8,7 +8,7 @@
 <b>Ejercicio 3:</b> Dada una lista de números enteros y dos valores enteros, A y B. Se pide informar cuántos elementos de la lista son sólo divisores de A y cuántos son divisores sólo de B.
 <br>
 
-<b>Ejercicio 4:</b> Dados N números enteros, se desea calcular el promedio de los que terminan en 0 o en 1, el promedio de los que terminan en 2 o en 3, el promedio de los que terminan en 4 o en 5 y así sucesivamente hasta el promedio de los que terminan en 8 o en 9.
+<b>Ejercicio 4:</b> Dados N números enteros, se desea calcular el promedio de los numeros pares y el promedio de los numeros impares.
 <br>
 
 <b>Ejercicio 5:</b> Dado un número natural K de dos cifras, se pide mostrar los números naturales primos que le anteceden. Por ejemplo si K= 12 la salida será {2, 3, 5, 7, 11).

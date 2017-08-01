@@ -20,10 +20,10 @@
 <br>
 
 <b>Ejercicio 7:</b> Dados N caracteres que representan un párrafo, conformados solamente por letras y espacios
-en blanco. Se pide informar la cantidad de vocales y la cantidad de consonantes que tiene el párrafo,
-también la cantidad de palabras que se encontraron.<br>
+en blanco. Se pide informar si es un isograma.<br>
 Nota: Entre las letras del párrafo no hay vocales acentuadas y las palabras se separan por un solo espacio
-en blanco. Considerar que el ingreso se realiza de a un carácter por vez.
+en blanco. Considerar que el ingreso se realiza de a un carácter por vez.<br>
+Un isograma es una palabra o un texto sin letras que se repitan.
 <br>
 
 <b>Ejercicio 8:</b> Dada una lista de números enteros, determinar la cantidad de sublistas ascendentes que se

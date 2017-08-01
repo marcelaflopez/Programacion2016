@@ -3,21 +3,21 @@
 int cargarAngulo();
 
 int main() {
-	int angulo1, angulo2, angulo3;
+	int lado1, lado2, lado3;
 	
 	do {
-		angulo1 = cargarAngulo();
-		angulo2 = cargarAngulo();
-		angulo3 = cargarAngulo();
+		lado1 = cargarAngulo();
+		lado2 = cargarAngulo();
+		lado3 = cargarAngulo();
 		
-		if(angulo1 + angulo2 < angulo3 && angulo3 + angulo2 < angulo1 && angulo1 + angulo3 < angulo2){
+		if(lado1 + lado2 < lado3 && lado3 + lado2 < lado1 && lado1 + lado3 < lado2){
 			printf("La suma de dos lados cualquieras tiene que ser mayor o igual al tercer lado!\n");
 		}
-	}while(angulo1 + angulo2 < angulo3 && angulo3 + angulo2 < angulo1 && angulo1 + angulo3 < angulo2);
+	}while(lado1 + lado2 < lado3 && lado3 + lado2 < lado1 && lado1 + lado3 < lado2);
 	
-	if(angulo1 != angulo2 && angulo2 != angulo3 && angulo1 != angulo3 ){
+	if(lado1 != lado2 && lado2 != lado3 && lado1 != lado3 ){
 		printf("El triangulo es escaleno\n");
-	}else if(angulo1 == angulo2 && angulo2 == angulo3){
+	}else if(lado1 == lado2 && lado2 == lado3){
 		printf("El triangulo es equilatero\n");
 	}else{
 		printf("El triangulo es isosceles\n");

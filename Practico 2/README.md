@@ -14,7 +14,7 @@
 <b>Ejercicio 5:</b> Dado un número natural K de dos cifras, se pide mostrar los números naturales primos que le anteceden. Por ejemplo si K= 12 la salida será {2, 3, 5, 7, 11).
 <br>
 
-<b>Ejercicio 6:</b> Dada una lista de N números, se desea obtener el promedio de los números que estén formados únicamente con dígitos pares.<br>
+<b>Ejercicio 6:</b> Dada una lista de N números, se desea obtener el promedio de los números que estén formados únicamente con 5 dígitos.<br>
 * a) Considerar que la lista es de números enteros.<br> 
 * b) Considerar que la lista es de números reales positivos.
 <br>

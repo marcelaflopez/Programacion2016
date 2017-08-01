@@ -8,7 +8,7 @@ Año: 2017
 typedef float listaInt[50];
 
 void cargarLista(listaInt lista, int *tam);
-int todoPar(int numero);
+int contarDigitos(int numero);
 float promedioLista(listaInt lista, int tam);
 int convertirEnEntero(float numero);
 
@@ -22,7 +22,7 @@ int main() {
 	if(promedio > 0){
 		printf("El promedio es:%.2f", promedio);
 	}else{
-		printf("La lista no tenia numeros formados solo por pares");
+		printf("La lista no tenia numeros formados 5 digitos");
 	}		
 	
 	return 0;
@@ -41,11 +41,11 @@ void cargarLista(listaInt lista, int *tam){
 }
 
 /*
-	Devuele el promedio de los numeros compuestos de pares.
-	Devuelve -1, si no se encuentran numeros compuestos de pares.
+	Devuele el promedio de los numeros compuestos de 5 digitos.
+	Devuelve -1, si no se encuentran numeros compuestos de 5 digitos.
 	Ejemplos:
-		promedioLista([24,24, 37,32, 22,22]) -> 23,23
-		promedioLista([12.12, 38.37, 11,11]) -> -1
+		promedioLista([243.25, 37, 222.22]) -> 232,735
+		promedioLista([12.1, 3.8, 11.22]) -> -1
 */
 float promedioLista(listaInt lista, int tam){
 	float sum;	
@@ -55,7 +55,7 @@ float promedioLista(listaInt lista, int tam){
 	cont = 0;
 	for(i = 1; i <= tam; i++){
 		aux = convertirEnEntero(lista[i]);
-		if(todoPar(aux) == 1){
+		if(contarDigitos(aux) == 5){
 			sum = sum + lista[i];
 			cont++;
 		}
@@ -73,19 +73,23 @@ float promedioLista(listaInt lista, int tam){
 		todoPar(2846) -> 1;
 		todopar(2786) -> 0;
 */
-int todoPar(int numero){
-	int respuesta,digito;
+/*
+Devuelve la cantidad de digitos de un numero.
+Ejemplo;
+todoPar(2846) -> 4;
+todopar(27864) -> 5;
+todopar(0) -> 0;
+*/
+int contarDigitos(int numero){
+	int cont;
 	
-	respuesta = 1;
-	while(numero > 0 && respuesta == 1){
-		digito = numero % 10;
-		if(digito % 2 != 0){
-			respuesta = 0;			
-		}
+	cont = 0;
+	while(numero > 0){
+		cont++;
 		numero = numero / 10;
 	}
 	
-	return respuesta;
+	return cont;
 }
 
 int convertirEnEntero(float numero){

@@ -30,8 +30,7 @@ Un isograma es una palabra o un texto sin letras que se repitan.
 Ejemplo: 75614368. No tiene sublistas ascendentes o descendentes.
 <br>
 
-<b>Ejercicio 9:</b> Dada una lista de números naturales, se pide contabilizar cuántos de ellos son capicúas e
-indicar los capicúas que están formados sólo por dígitos impares.
+<b>Ejercicio 9:</b> Dada una lista de números naturales, se pide contabilizar cuántos de ellos están formados sólo por los mismos digitos.
 <br>
 
 <b>Ejercicio 10:</b> Dados dos números naturales A y B (A<B) y una cantidad no determinada de números

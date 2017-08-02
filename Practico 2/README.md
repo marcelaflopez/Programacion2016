@@ -26,10 +26,8 @@ en blanco. Considerar que el ingreso se realiza de a un carácter por vez.<br>
 Un isograma es una palabra o un texto sin letras que se repitan.
 <br>
 
-<b>Ejercicio 8:</b> Dada una lista de números enteros, determinar la cantidad de sublistas ascendentes que se
-encuentran en ella. No se debe considerar un solo elemento como sublista. No se deben contar sublistas
-superpuestas.<br>
-Ejemplo: 75674567. Tiene 2 (dos) sublistas 567 y 4567
+<b>Ejercicio 8:</b> Dada una lista de números enteros, determinar que la lista no contenga sublistas ascendentes o descendentes. No se debe considerar un solo elemento como sublista.<br>
+Ejemplo: 75614368. No tiene sublistas ascendentes o descendentes.
 <br>
 
 <b>Ejercicio 9:</b> Dada una lista de números naturales, se pide contabilizar cuántos de ellos son capicúas e

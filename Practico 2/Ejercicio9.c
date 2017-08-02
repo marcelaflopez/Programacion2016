@@ -7,32 +7,16 @@ Año: 2017
 typedef int listaInt[50];
 
 void cargarLista(listaInt lista, int *tam);
-int numeroInvertido(int numero);
-int esCapicua(int numero);
-int soloImpares(int numero);
+int contarLista(listaInt lista, int tam);
+int mismoDigito(int numero);
 
 
 int main(int argc, char *argv[]) {
 	listaInt lista;
-	int tam,i,cantidad,bandera;
+	int tam;
 	
-	bandera = 0;
-	cantidad = 0;
 	cargarLista(lista, &tam);
-	for(i = 1; i <= tam; i++){
-		if(esCapicua(lista[i]) == 1){
-			cantidad++;
-			if(soloImpares(lista[i]) == 1){
-				bandera = 1;
-				printf("Numero formado solo con digitos impares:%d\n", lista[i]);
-			}
-		}
-	}
-	printf("Cantidad de capicuas:%d\n", cantidad);
-	if(bandera == 0){
-		printf("La lista no contiene capicuas formados solo por digitos impares\n");
-	}
-	
+	printf("La cantidad de numeros compuestos por el mismo digito es: %d", contarLista(lista, tam));
 	return 0;
 }
 
@@ -48,57 +32,47 @@ void cargarLista(listaInt lista, int *tam){
 }
 
 /*
-	Devuelve el numero invertido.
-	Ejemplos;
-		numeroInvertido(14789) -> 98741
-		numeroInvertido(426) -> 624
+	Devuelve la cantidad de numeros que estan formados por el mismo digito.
 */
-int numeroInvertido(int numero){
-	int aux,numeroInv;
+int contarLista(listaInt lista, int tam){
+	int cantidad, i;
 	
-	aux = numero;
-	numeroInv = 0;
-	while(aux > 0){
-		numeroInv = numeroInv * 10 + (aux % 10);
-		aux = aux / 10;
-	}
-	
-	return numeroInv;
-}
-
-/*
-	Devuelve 1 si el numero es capicua, -1 en caso contrario.
-	Ejemplos:
-		esCapicua(757) -> 1
-		esCapicua(745) -> -1
-		esCapicua(5) -> 1
-*/
-int esCapicua(int numero){
-	if(numeroInvertido(numero) == numero){
-		return 1;
-	}else{
-		return -1;
-	}
-}
-
-/*
-	Devuelve 1 si un numero esta compuesto solo de impares, 0 lo contrario
-	Ejemplos:
-		soloImpares(759) -> 1
-		soloImpares(781) -> 0
-*/
-int soloImpares(int numero){
-	int resultado,digito;
-	
-	resultado = 1;
-	while(numero > 0 && resultado == 1){
-		digito = numero % 10;
-		if(digito % 2 != 1){
-			resultado = 0;
+	cantidad = 0;
+	for(i = 1; i <= tam; i++){
+		if(mismoDigito(lista[i]) == 1){
+			cantidad++;			
 		}
-		numero = numero / 10;
+	}
+	
+	return cantidad;
+}
+
+/*
+	Devuelve 1 si el numero esta compuesto por el mismo digito,
+	- 1 en caso contrario.
+	Ejemplos:
+		mismoDigito(777) -> 1
+		mismoDigito(745) -> -1
+		mismoDigito(5) -> 1
+*/
+int mismoDigito(int numero){
+	int primerDigito, resultado, digito;	
+	
+	primerDigito = numero % 10;
+	numero = numero / 10;
+	resultado = 1;
+	while(numero > 0){
+		digito = numero % 10;
+		if(digito != primerDigito){
+			numero = 0;
+			resultado = -1;
+		}else{
+			numero = numero / 10;
+		}
 	}
 	
 	return resultado;
 }
+
+
 

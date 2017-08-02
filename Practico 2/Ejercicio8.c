@@ -8,14 +8,18 @@ Año: 2017
 typedef int listaInt[50];
 
 void cargarLista(listaInt lista, int *tam);
-int cantidadSubListas(listaInt lista, int tam);
+int verificar(listaInt lista, int tam);
 
 int main() {
 	int tam;
-	listaInt lista;	
+	listaInt lista;		
 	
 	cargarLista(lista, &tam);
-	printf("Cantidad de sublistas:%d\n", cantidadSubListas(lista, tam));
+	if(verificar(lista, tam) == 1){
+		printf("\nNo tiene sublistas ascendentes o descendentes");
+	}else{
+		printf("\nTiene sublistas ascendentes o descendentes");
+	}
 	
 	return 0;
 }
@@ -33,30 +37,42 @@ void cargarLista(listaInt lista, int *tam){
 }
 
 /*
-	Devuelve la cantidad de sublistas ascendentes que no se solapan
-	y tienen mas de un elemento.
+	Devuelve 1 si no tiene sublistas ascendentes o descentes,
+	-1 en caso contrario. Funciona para listas de al menos 
+	tamaño 2.
 	Ejemplos:
-		cantidadSubListas([7, 5, 6, 7, 4, 5, 6, 7], 8) -> 2	
+		cantidadSubListas([7, 5, 6, 1, 4, 3, 6, 2], 8) -> 1	
+		cantidadSubListas([7, 8, 6, 1, 4, 3, 6, 2], 8) -> -1
 */
-int cantidadSubListas(listaInt lista, int tam){
-	int cantidad, contador, i;
+int verificar(listaInt lista, int tam){
+	int i, band, valor;
 	
-	cantidad = 0;
-	contador = 1;
-	for(i = 1; i <= tam - 1; i++){
-		if(lista[i + 1] <= lista[i] && contador > 1){
-			cantidad++;
-			contador = 1;
+	
+	band = 1;
+	if(lista[2] <= lista[1]){
+		valor = 0;
+	}else{
+		valor = 1;
+	}
+	i = 2;
+	while(i < tam && band == 1){
+		if(valor == 0){
+			if(lista[i + 1] >= lista[i]){
+				valor = 1;
+			}else{
+				band = -1;
+			}
 		}else{
-			contador++;
-		}
+			if(lista[i + 1] <= lista[i]){
+				valor = 0;
+			}else{
+				band = -1;
+			}
+		}		
+		i++;
 	}
 	
-	if(contador > 1){ /*Verifico si hay una sublista al final de la lista*/
-		cantidad++;
-	}
-	
-	return cantidad;
+	return band;
 }
 
 

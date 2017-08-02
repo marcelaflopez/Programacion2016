@@ -26,7 +26,7 @@ en blanco. Considerar que el ingreso se realiza de a un carácter por vez.<br>
 Un isograma es una palabra o un texto sin letras que se repitan.
 <br>
 
-<b>Ejercicio 8:</b> Dada una lista de números enteros, determinar que la lista no contenga sublistas ascendentes o descendentes. No se debe considerar un solo elemento como sublista.<br>
+<b>Ejercicio 8:</b> Dada una lista de números enteros, determinar que la lista no contenga sublistas ascendentes o descendentes. Es decir, si el siguiente de un numero es menor, el proximo tiene que ser mayor, menor, etc.<br>
 Ejemplo: 75614368. No tiene sublistas ascendentes o descendentes.
 <br>
 

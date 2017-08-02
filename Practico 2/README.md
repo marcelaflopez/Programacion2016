@@ -35,5 +35,5 @@ Ejemplo: 75614368. No tiene sublistas ascendentes o descendentes.
 
 <b>Ejercicio 10:</b> Dados dos números naturales A y B (A<B) y una cantidad no determinada de números
 naturales, mostrar:<br>
-* El menor y el mayor multiplo de  A o B que se encuentra dentro del intervalo [A, B].<br>
-* El porcentaje de los multiplos de A o B .
+* El mayor multiplo de  A que se encuentra dentro del intervalo [A, B].<br>
+* El menor divisor de  B que se encuentra dentro del intervalo [A, B] .

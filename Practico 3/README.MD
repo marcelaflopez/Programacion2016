@@ -1,10 +1,10 @@
 <b>Ejercicio 5:</b> Desarrollar los siguientes módulos:<br>
 * a) Crear un módulo que determine la cantidad de divisores positivos de un número natural (sin contar los divisores triviales) ¿En qué tipo de problemas podría utilizar este módulo? Brinde un ejemplo.<br>
-* b) Crear un módulo que dado un número natural NUM en base 10 y una base B < 10 calcule el equivalente de NUM en base B.<br>
+* b) Crear un módulo que dado un número natural NUM y una base B < 10 calcule el equivalente de NUM en base 10.<br>
 * c) Crear un módulo que determine si un número NUM de tipo natural es primo.
 <br>
 
-Realizar un programa utilizando los módulos anteriores en el que para dado un número entero en base 10, si es primo calcule su equivalente a base B y si no muestre la cantidad de divisores del numero.<br>
+Realizar un programa utilizando los módulos anteriores en el que para dado un número entero y una base, convertir el numero a base 10 y si es primo muestre un mensaje diciendo que es primo y si no muestre la cantidad de divisores del numero.<br>
 
 <b>Ejercicio 6:</b> Desarrollar los siguientes módulos:
 * 1. Dados dos números naturales determine si éstos son amigos.<br>

@@ -11,6 +11,7 @@ Realizar un programa utilizando los módulos anteriores en el que para dado un n
  N=10, (1 + 2 + ... + 10)² = 55² = 3025<br>
 * 2. Dado un numero N natural. Calcular la suma de los cuadrados de los primeros n naturales.<br>
  N=10, 1² + 2² + ... + 10² = 385<br>
+ 
 Para una lista de K números naturales aleatorios en el rango [A, B] con A y B naturales, realizar un programa que muestre la diferencia entre el cuadrado de la suma y la suma de cuadrados, para cada numero natural aleatorio.
 <br>
 

@@ -7,14 +7,11 @@
 Realizar un programa utilizando los módulos anteriores en el que para dado un número entero y una base, convertir el numero a base 10 y si es primo muestre un mensaje diciendo que es primo y si no muestre la cantidad de divisores del numero.<br>
 
 <b>Ejercicio 6:</b> Desarrollar los siguientes módulos:
-* 1. Dados dos números naturales determine si éstos son amigos.<br>
-Los números son amigos, si cada uno de ellos es igual a la suma de los divisores del otro (tener en cuenta que no se debe tomar al mismo número como divisor). Por ejemplo, 220 y 284 son amigos, ya que:<br>
-Suma de divisores de 284: 1 + 2 + 4 + 71 + 142 = 220<br>
-Suma de divisores de 220: 1 + 2 + 4 + 5 + 10 + 11 + 20 + 22 + 44 + 55 + 110 = 284<br>
-<b>Nota:</b> Si para la solución de este problema detecta alguna otra tarea que deba ser un módulo debe implementarse.<br>
-* 2. Dado un número natural determine si es un número deficiente, abundante o perfecto.<br>
-Un número natural N se dice que es deficiente si la suma de sus divisores (sin contarse a sí mismo) es menor a N. Si la suma de sus divisores es mayor a N se dice que el número es abundante y si es igual a N se dice que es perfecto.
-Para una lista de N números naturales aleatorios en el rango [A, B] con A y B naturales, realizar un programa que muestre de esos números aleatorios los que poseen un número amigo en ese mismo rango. No considere a los números deficientes.
+* 1.  Dado un numero N natural. Calcular el cuadrado de la suma de los primeros n naturales.<br>
+ N=10, (1 + 2 + ... + 10)² = 55² = 3025<br>
+* 2. Dado un numero N natural. Calcular la suma de los cuadrados de los primeros n naturales.<br>
+ N=10, 1² + 2² + ... + 10² = 385<br>
+Para una lista de K números naturales aleatorios en el rango [A, B] con A y B naturales, realizar un programa que muestre la diferencia entre el cuadrado de la suma y la suma de cuadrados, para cada numero natural aleatorio.
 <br>
 
 <b>Ejercicio 7:</b><br>

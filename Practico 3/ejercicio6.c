@@ -9,12 +9,11 @@ Año: 2017
 
 typedef int listaInt[110];
 
-int sumaDivisores(int numero);
-int esAmigo(int numero1, int numero2);
-int tipoNumero(int numero);
+long cuadradoSuma(int n);
+long sumaCuadrados(int n);
 void ingresarAB(int *A, int *B);
 void generarLista(listaInt lista, int *tam, int A, int B);
-void poseeNumeroAmigo(listaInt lista, int tam, int A, int B);
+void mostrarDiferencias(listaInt lista, int tam);
 	
 int main(int argc, char *argv[]) {
 	listaInt lista;
@@ -24,58 +23,43 @@ int main(int argc, char *argv[]) {
 	
 	ingresarAB(&A, &B);
 	generarLista(lista, &tam, A, B);
-	poseeNumeroAmigo(lista, tam, A, B);	
+	mostrarDiferencias(lista, tam);	
 	
 	return 0;
 }
 
 /*
-	Retorna la suma de los divisores de un numero, sin tener en cuenta si mismo.
-	Ejemplos:
-		sumaDivisores(18) -> 19
-		sumaDivisores(20) -> 22
+	Calcula el cuadrado de la suma de los primeros n naturales.
+	Ejemplo:
+		cuadradoSuma(10) ->  (1 + 2 + ... + 10)² = 55² = 3025
 */
-int sumaDivisores(int numero){
-	int acumulador, i;
+long cuadradoSuma(int n){
+	int i;
+	long sum;
 	
-	acumulador = 0;
-	for(i = 1; i <= numero / 2; i++){
-		if(numero % i == 0){
-			acumulador = acumulador + i;
-		}
+	sum = 0;
+	for (i = 1; i <= n; i++){
+		sum += i;
 	}
 	
-	return acumulador;
+	return sum * sum;
 }
 
 /*
-	Retorna 1 si los numeros son amigos, -1 sino.
-	Ejemplos:
-		esAmigo(284, 220) -> 1
-		esAmigo(285, 220) -> -1
+	Calcula la suma de los cuadrados de los primeros n naturales.
+	Ejemplo:
+		sumaCuadrados(10) -> 1² + 2² + ... + 10² = 385
 */
-int esAmigo(int numero1, int numero2){
-	if(numero1 == sumaDivisores(numero2) && numero2 == sumaDivisores(numero1)){
-		return 1;
-	}else{
-		return -1;
-	}
-}
-
-/*
-	Retorna si un numero es deficiente(0), abundante(2) o perfecto(1).
-*/
-int tipoNumero(int numero){
-	int sumaDiv;
+long sumaCuadrados(int n){
+	int i;
+	long sum;
 	
-	sumaDiv = sumaDivisores(numero);
-	if(numero > sumaDiv){
-		return 0;
-	}else if(numero == sumaDiv){
-		return 1;
-	}else{
-		return 2;
+	sum = 0;
+	for (i = 1; i <= n; i++){
+		sum = sum  + (i * i);
 	}
+	
+	return sum;
 }
 
 void ingresarAB(int *A, int *B){
@@ -106,23 +90,14 @@ void generarLista(listaInt lista, int *tam, int A, int B){
 }
 
 /*
-	Muestra los numeros que tiene amigos en el rango [A, B] y no son deficientes.
+	Muestra las diferencia del cuadrado de la suma y la suma de los cuadradoSuma
+	para cada numero en la lista.
 */
-void poseeNumeroAmigo(listaInt lista, int tam, int A, int B){
-	int i, j, bandera;
+void mostrarDiferencias(listaInt lista, int tam){
+	int i;
 	
-	bandera = 0;
 	for(i = 1; i <= tam; i++){
-		for(j = A; j <= B; j++){
-			if(esAmigo(lista[i], j) == 1 && tipoNumero(lista[i]) != 0){
-				printf("El numero %d tiene amigos en el rango [%d, %d] y no es deficiente.\n", lista[i], A, B);
-				bandera = 1;
-			}
-		}
-	}
-	
-	if(bandera == 0){
-		printf("No hay numeros que posean amigos y no sean deficientes en el rango [%d, %d]\n", A, B);
+		printf("La diferencia es : %ld\n", cuadradoSuma(lista[i]) - sumaCuadrados(lista[i]));
 	}
 }
 

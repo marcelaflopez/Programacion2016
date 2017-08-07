@@ -4,7 +4,7 @@
 * c) Crear un módulo que determine si un número NUM de tipo natural es primo.
 <br>
 
-Realizar un programa utilizando los módulos anteriores en el que para dado un número entero en base 10, si es primo calcule su equivalente a base B y si no muestre un mensaje diciendo que no es primo.<br>
+Realizar un programa utilizando los módulos anteriores en el que para dado un número entero en base 10, si es primo calcule su equivalente a base B y si no muestre la cantidad de divisores del numero.<br>
 
 <b>Ejercicio 6:</b> Desarrollar los siguientes módulos:
 * 1. Dados dos números naturales determine si éstos son amigos.<br>

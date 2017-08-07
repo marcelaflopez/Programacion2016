@@ -6,18 +6,21 @@ Año: 2017
 */
 
 int cantidadDivisores(int numero);
-int toBase(int numero, int base);
+int toBase10(int numero, int base);
 int esPrimo(int numero);
 	
 int main(int argc, char *argv[]) {
-	int numero;
+	int numero, base;
 	
 	printf("Ingrese numero:\n");
-	scanf("%d", &numero);	
-	if(esPrimo(cantidadDivisores(numero)) == 1){
-		printf("Equivalente en base 2:%d\n", toBase(numero, 2));
+	scanf("%d", &numero);
+	printf("Ingrese base:\n");
+	scanf("%d", &base);
+	numero = toBase10(numero, base);
+	if(esPrimo(numero) == 1){
+		printf("El numero en base 10 -> %d es primo.\n", numero);
 	}else{
-		printf("Equivalente en base 9:%d\n", toBase(numero, 9));
+		printf("La cantidad de divisores del numero en base 10 -> %d es: %d\n", numero, cantidadDivisores(numero) + 2);
 	}
 	
 	return 0;
@@ -46,19 +49,19 @@ int cantidadDivisores(int numero){
 /*
 	Retorna el numero convertido en la base dada
 	Ejemplos:
-		toBase(7,2) -> 111
-		toBase(16, 8) -> 20
+		toBase(111,2) -> 7
+		toBase(20, 8) -> 16
 */
-int toBase(int numero, int base){
+int toBase10(int numero, int base){
 	int aux, digito, exponente;
 	
 	aux = 0;
 	exponente = 0;
 	while(numero > 0){
-		digito = numero % base;
-		aux = aux + digito * pow(10, exponente);
+		digito = numero % 10;
+		aux = aux + digito * pow(base, exponente);
 		exponente++;
-		numero = numero / base;
+		numero = numero / 10;
 	}
 	
 	return aux;

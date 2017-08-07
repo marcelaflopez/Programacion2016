@@ -16,9 +16,9 @@ Para una lista de K números naturales aleatorios en el rango [A, B] con A y B n
 <br>
 
 <b>Ejercicio 7:</b><br>
-Para X e N dados, diseñar un módulo que calcule la siguiente sucesión:<br>
+Para un N dado, diseñar un módulo que calcule la siguiente sucesión:<br>
 Sn = Σ(i=0 .. n) (-1)^i / 2i + 1 <br>
-Realizar otro módulo en el que dado un valor para X y un error, como parámetros, (por ejemplo 0.001) devuelva el primer valor i que cumpla una aproximación de π/4.<br>
+Realizar otro módulo en el que dado un error, como parámetro, (por ejemplo 0.001) devuelva el primer valor i que cumpla una aproximación de π/4.<br>
 Se cumple que lim Sn = π/4
 (cuando n -->+∞)<br>
 ¿Reutilizó el primer módulo desarrollado?

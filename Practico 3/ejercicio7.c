@@ -9,18 +9,16 @@ Año: 2017
 typedef int listaInt[110];
 
 int factorial(int numero);
-float sucesion(int x, int i);
+float sucesion(int n);
 int sucesionError(float error);
 
 int main(int argc, char *argv[]) {
-	int i, x;
+	int n;
 	float error;	
 	
-	printf("Ingrese el valor para i:\n");
-	scanf("%d", &i);
-	printf("Ingrese el valor para x:\n");
-	scanf("%d", &x);
-	printf("El valor de la sucesion para x e i es:%f\n", sucesion(x, i));
+	printf("Ingrese el valor para N:\n");
+	scanf("%d", &n);
+	printf("El valor de la sucesion para x e i es:%f\n", sucesion(n));
 	printf("Ingrese el error:\n");
 	scanf("%f", &error);
 	printf("El valor para i es:%d\n", sucesionError(error));
@@ -28,33 +26,18 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
-/*
-	Devuelve el factorial de un numero.
-	Ejemplos:
-		factorial(3) -> 6
-		factorial(6) -> 720
-*/
-int factorial(int numero){
-	int acumulador, i;
-	
-	acumulador = 1;
-	for(i = 1; i <= numero; i++){
-		acumulador = acumulador * i;
-	}
-	
-	return acumulador;
-}
+
 
 /*
-	Calcula la sucesion Si = 1 + X + X2/2! + X3/3! +...+ Xi/i!
+	Calcula la sucesion Sn = S(i=0 .. n) (-1)^i / 2i + 1 
 */
-float sucesion(int x, int i){
-	int j;
+float sucesion(int n){
+	int i;
 	float acumulador;
 	
 	acumulador = 0;
-	for(j = 0; j <= i; j++){
-		acumulador = acumulador + (pow(x, j)/factorial(j));
+	for(i = 0; i <= n; i++){
+		acumulador = acumulador + pow(-1, i)/ (2*i + 1);
 	}
 	
 	return acumulador;
@@ -62,7 +45,7 @@ float sucesion(int x, int i){
 
 /*
 	Devuelve el primero valor de i, para el cual se cumple
-	una aproximacion de e^x, dentro del error dado.
+	una aproximacion de pi/4, dentro del error dado.
 */
 int sucesionError(float error){
 	int i;
@@ -70,8 +53,8 @@ int sucesionError(float error){
 	
 	i = 0;
 	acumulador = 0;
-	while(fabs(2.7182 - acumulador) > error){
-		acumulador = acumulador + (1 / factorial(i));
+	while(fabs(0.7853 - acumulador) > error){
+		acumulador = acumulador + pow(-1, i)/ (2*i + 1);;
 		i++;	
 	}
 	

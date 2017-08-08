@@ -26,17 +26,12 @@ Se cumple que lim Sn = π/4
 
 <b>Ejercicio 8:</b> Crear un módulo que determine si un numero natural es primo. Realizar un programa que utilice dicho módulo para que dado un numero N, encuentre cual es el N primo.<br>
 
-<b>Ejercicio 9:</b> Crear dos módulos, el primero para que reciba un número real positivo y lo modifique expresando ese número en notación científica, es decir, determinando el valor de la mantisa normalizada y el valor del exponente. El segundo módulo para que, dado una mantisa y un exponente, determine el número real, en notación de punto fijo.<br>
-Realizar un programa tal que dada una lista de N números reales positivos mostrar el menor y el mayor número analizando el valor del exponente y en caso de igualdad comparar las mantisas normalizadas. Además calcular y mostrar el promedio de esos dos valores sin normalizar.
-<br>
+<b>Ejercicio 10:</b> Ahorcadito: Este es un juego muy antiguo en el que intervienen dos personas.<br>
+Un jugador escribe una palabra y el otro jugador debe adivinar que palabra es diciendo una letra, si la palabra contiene esa letra
+, la palabra se va formando, si la palabra no contiene esa letra, el jugador acumula 1 punto.
+El jugador que escribio la palabra gana si el otro jugador acumula 5 puntos, pierde si el otro jugador adivina la palabra.<br>
 
-<b>Ejercicio 10:</b> Piedra, papel o tijeras: Este es un juego muy antiguo en el que intervienen dos personas.<br>
-Cada jugador hace su elección entre las tres alternativas existentes (piedra, papel o tijeras) y el ganador se determina atendiendo a las siguientes reglas:<br>
-* I. La piedra gana a las tijeras.
-* II. Las tijeras ganan al papel
-* III. El papel gana a la piedra.
-* IV. Si las dos elecciones son iguales se produce un empate.<br>
-Escribe un programa que permita a la máquina jugar contra un humano todas las veces que el quiera. Máquina y humano harán su elección y la máquina será la que decida quién gana.
+Escribe un programa que permita a dos jugadores jugar.
 <br>
 
 <b>Ejercicio 11:</b> Desarrollar los siguientes módulos:<br>

@@ -24,7 +24,7 @@ Se cumple que lim Sn = π/4
 ¿Reutilizó el primer módulo desarrollado?
 <br>
 
-<b>Ejercicio 8:</b> Crear un módulo que manipule dos números enteros suprimiendo la última cifra del primero y añadiéndola al final del segundo. Realizar un programa que utilice dicho módulo para invertir un número.<br>
+<b>Ejercicio 8:</b> Crear un módulo que determine si un numero natural es primo. Realizar un programa que utilice dicho módulo para que dado un numero N, encuentre cual es el N primo.<br>
 
 <b>Ejercicio 9:</b> Crear dos módulos, el primero para que reciba un número real positivo y lo modifique expresando ese número en notación científica, es decir, determinando el valor de la mantisa normalizada y el valor del exponente. El segundo módulo para que, dado una mantisa y un exponente, determine el número real, en notación de punto fijo.<br>
 Realizar un programa tal que dada una lista de N números reales positivos mostrar el menor y el mayor número analizando el valor del exponente y en caso de igualdad comparar las mantisas normalizadas. Además calcular y mostrar el promedio de esos dos valores sin normalizar.

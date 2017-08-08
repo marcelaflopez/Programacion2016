@@ -6,47 +6,48 @@ Autor: Fernando Orquera
 Año: 2017
 */
 
-void cambiarDigito(int *num1, int *num2);
-int invertirNumero(int numero);
+int esPrimo(int numero);
+int nPrimo(int n);
 
 int main(int argc, char *argv[]) {
-	int  numero;		
+	int  n;		
 	
-	printf("Ingrese el primer numero:\n");
-	scanf("%d", &numero);	
-	printf("Numero invertido:%d\n", invertirNumero(numero));
+	printf("Ingrese N para encontrar el N-esimo primo:\n");
+	scanf("%d", &n);	
+	printf("El n-esimo primo es: %d\n", nPrimo(n));
 	
 	return 0;
 }
 
-/*
-	Suprime la última cifra del primer numero y
-	la añade al final del segundo numero
-	Ejemplos:
-		cambiarDigito(789, 14) -> (78, 149)
-		cambiarDigito(6, 541) -> (0, 541)
-*/
-void cambiarDigito(int *num1, int *num2){
-	int digito;
-	
-	digito = *num1 % 10;
-	*num1 = *num1 / 10;
-	*num2 = *num2 * 10 + digito;
-}
 
 /*
-	Retorna el numero invertido.
-	Ejemplos:
-		invertirNumero(123456) -> 654321
-		invertirNumero(14785) -> 58741
+	Devuelve 1 si el numero es primo, -1 en caso contrario.
 */
-int invertirNumero(int numero){
-	int resultado;
+int esPrimo(int numero){
+	int pd;
 	
-	resultado = 0;
-	while(numero > 0){
-		cambiarDigito(&numero, &resultado);
+	pd = 2;
+	while(pd <= sqrt(numero) && numero % pd != 0){
+		pd++;
+	}
+	if(pd > sqrt(numero)){
+		return 1;	
+	}else{
+		return -1;	
+	}
+}
+
+int nPrimo(int n){
+	int contador, posible_primo;
+	
+	contador = 1;
+	posible_primo = 2;
+	while(contador != n){
+		posible_primo++;
+		if(esPrimo(posible_primo) == 1){
+			contador++;
+		}
 	}
 	
-	return resultado;
+	return posible_primo;
 }

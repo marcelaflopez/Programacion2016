@@ -1,103 +1,173 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
-#include <time.h>
-
 /*
 Autor: Fernando Orquera
 Año: 2017
 */
 
-int jugadaPC();
-void mostrarJugadaPC(int pc);
-int jugadaJugador();
-int analizarJugada(int jugador, int pc);
+const int tam_max=50;
+
+typedef char Tcadena[100];
+typedef int listaInt[100];
+
+int leeCad(Tcadena cadena, int tam);
+void iniciarEncontradas(listaInt lista, int tam);
+int buscarLetra(Tcadena palabra, listaInt encontradas, int tam, char c);
+void marcarLetra(Tcadena palabra, listaInt encontradas, int tam, char c);
+void mostrarPalabra(Tcadena palabra, listaInt encontradas, int tam);
+int analizarEncontradas(listaInt encontradas, int tam);
+void mostrarGanador(int acu);
+void jugar(Tcadena palabra, listaInt encontradas, int tam);
 
 int main(int argc, char *argv[]) {
-	int jugador, pc, puntajeJugador, puntajePC, continuar,jugada;
+	Tcadena palabra;
+	listaInt encontradas;
+	int tam;
 	
-	srand(time(NULL));
-	puntajeJugador = 0;
-	puntajePC = 0;
-	do{
-		printf("Puntaje Jugador:%d\n", puntajeJugador);
-		printf("Puntaje PC:%d\n", puntajePC);
-		jugador = jugadaJugador();
-		pc = jugadaPC();
-		mostrarJugadaPC(pc);
-		jugada = analizarJugada(jugador, pc); 
-		if(jugada == 1){
-			printf("Gana Jugador!\n");
-			puntajeJugador++;
-		}else if(jugada == -1){
-			printf("Gana PC!\n");
-			puntajePC++;
-		}else{
-			printf("Empate!\n");
-		}
-		printf("Puntaje Jugador:%d\n", puntajeJugador);
-		printf("Puntaje PC:%d\n", puntajePC);
-		printf("Ingrese 1, si desea seguir jugando:\n");
-		scanf("%d", &continuar);
-	}while(continuar == 1);
-	
+	printf("\nIngrese la palabra a adivinar:");
+	leeCad(palabra, tam_max);
+	tam = strlen(palabra);
+	iniciarEncontradas(encontradas, tam);
+	jugar(palabra, encontradas, tam);
 	
 	return 0;
 }
 
-/*
-	Retorna la jugada de la PC.
-	1- Papel
-	2- Piedra
-	3- Tijera
-*/
-int jugadaPC(){
+int leeCad(Tcadena cadena, int tam){
+	int j, ret;
+	char c;
+	j=0;
+	fflush(stdin);
+	c=getchar();
+	ret=0;
+	while (c!=EOF && c!='\n' && j<tam-1)
+	{
+		cadena[j]=c;
+		j++;
+		c=getchar();
+		ret=1;
+	}
+	cadena[j]='\0';
 	
-	return (rand() * 2 / RAND_MAX) + 1; 
+	while(c!=EOF && c!='\n')
+		c=getchar();
+	return ret;
 }
 
-void mostrarJugadaPC(int pc){
-	switch(pc){
-		case 1: 
-			printf("PC eligio Papel.\n");
-			break;
-		case 2: 
-			printf("PC eligio Piedra.\n");
-			break;
-		case 3: 
-			printf("PC eligio Tijera.\n");
-			break;
+/*
+Inicia un vector del mismo tamaño de la palabra
+lleno con 0, para indicar que letra fue adivinada o no.
+*/
+void iniciarEncontradas(listaInt lista, int tam){
+	int i;
+	
+	for(i = 0; i < tam; i++){
+		lista[i] = 0;
 	}
 }
 
-int jugadaJugador(){
-	int jugada;
+/*
+Busca una letra en la palabra, devuelve 1 si la encuentra.
+-1 en caso contrario.
+*/
+int buscarLetra(Tcadena palabra, listaInt encontradas, int tam, char c){
+	int i;
 	
-	do{
-		printf("Seleccionar jugada:\n");
-		printf("1 - Papel.\n");
-		printf("2 - Piedra.\n");
-		printf("3 - Tijera.\n");
-		scanf("%d", &jugada);
-	}while(jugada <1 || jugada > 3);
-	
-	return jugada;
+	i = 0;
+	while(i < tam && palabra[i] != c){
+		i++;
+	}
+	if(i < tam){
+		return 1;
+	}else{
+		return -1;
+	}
 }
 
 /*
-	Devuelve 1 si gano el jugador.
-	Devuelve -1 si gani la pc.
-	Devuelve 0 si hay empate.
+Busca la letra en la palabra, si la encuentra, marca que fue encontrada en el
+vector de encontradas.
 */
-int analizarJugada(int jugador, int pc){
-	int resultado;
+void marcarLetra(Tcadena palabra, listaInt encontradas, int tam, char c){
+	int i;
 	
-	if(jugador == pc){
-		resultado = 0;
-	}else if((jugador == 1 && pc == 2) || (jugador == 2 && pc == 3) || (jugador == 3 && pc == 1)){
-		resultado = 1;
-	}else{
-		resultado = -1;
-	}		
-		
-	return resultado;
+	for(i = 0; i < tam; i++){
+		if(palabra[i] == c){
+			encontradas[i] = 1;
+		}
+	}
 }
+
+/*
+Muestra la palabra con las letras adivinas hasta el momento.
+*/
+void mostrarPalabra(Tcadena palabra, listaInt encontradas, int tam){
+	int i;
+	
+	printf("\n");
+	for(i = 0; i < tam; i++){
+		if(encontradas[i] == 1){
+			printf("%c", palabra[i]);
+		}else{
+			printf("%c", '_');
+		}
+		printf(" ");
+	}
+}
+
+
+/*
+Devuelve 1 si todas las letras fueron adivinadas, -1 en caso contrario.
+*/
+int analizarEncontradas(listaInt encontradas, int tam){
+	int i, band;
+	
+	i = 0;
+	band = 1;
+	while(i < tam && band == 1){
+		if(encontradas[i] == 0){
+			band = 0;
+		}else{
+			i++;
+		}
+	}
+	
+	return band;
+}
+
+/*
+Muestra quien fue el ganador de la partida.
+*/
+void mostrarGanador(int acu){
+	
+	if(acu == 5){
+		printf("\nPerdio el jugador que tenia que adivinar.");
+	}else{
+		printf("\nGano el jugador que tenia que adivinar.");
+	}
+}
+
+/*
+Controla el juego.
+*/
+void jugar(Tcadena palabra, listaInt encontradas, int tam){
+	int acu;
+	char c;
+	
+	acu = 0;
+	while(acu < 5 && analizarEncontradas(encontradas, tam) != 1){
+		printf("\nIngrese letra:");
+		fflush(stdin);
+		scanf("%c", &c);
+		if(buscarLetra(palabra, encontradas, tam, c) == 1){
+			marcarLetra(palabra, encontradas, tam, c);			
+		}else{
+			acu++;
+		}
+		printf("\nPuntuacion: %d", acu);
+		mostrarPalabra(palabra, encontradas, tam);
+	}
+	mostrarGanador(acu);
+}
+

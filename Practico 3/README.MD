@@ -38,5 +38,6 @@ Escribe un programa que permita a dos jugadores jugar.
 * a) Crear un módulo que genere una hora al azar.
 * b) Crear un módulo que calcule la cantidad de segundos que existe entre dos horas.
 * d) Crear un módulo que permita el ingreso de una hora por el usuario.<br>
+
 Realizar un programa utilizando módulos anteriores en el que dadas N horas, se pide generar una hora al azar y luego indicar la cantidad de segundos promedio entre cada una las horas ingresadas y la hora generada al azar.<br>
 <b>Nota:</b> El formato para trabajar con las horas debe ser segundos, minutos y horas en variables separadas.

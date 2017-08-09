@@ -35,8 +35,8 @@ Escribe un programa que permita a dos jugadores jugar.
 <br>
 
 <b>Ejercicio 11:</b> Desarrollar los siguientes módulos:<br>
-* a) Crear un módulo que genere una fecha al azar (considerar que los años no son bisiesto).
-* b) Crear un módulo que calcule la cantidad de días que existe entre dos fechas.
-* d) Crear un módulo que permita el ingreso de una fecha por el usuario.<br>
-Realizar un programa utilizando módulos anteriores en el que dadas N fechas, se pide generar una fecha al azar y luego indicar la cantidad de días promedio entre cada una las fechas ingresadas y la fecha generada al azar.<br>
-<b>Nota:</b> El formato para trabajar con las fechas debe ser día, mes y año en variables separadas.
+* a) Crear un módulo que genere una hora al azar.
+* b) Crear un módulo que calcule la cantidad de segundos que existe entre dos horas.
+* d) Crear un módulo que permita el ingreso de una hora por el usuario.<br>
+Realizar un programa utilizando módulos anteriores en el que dadas N horas, se pide generar una hora al azar y luego indicar la cantidad de segundos promedio entre cada una las horas ingresadas y la hora generada al azar.<br>
+<b>Nota:</b> El formato para trabajar con las horas debe ser segundos, minutos y horas en variables separadas.

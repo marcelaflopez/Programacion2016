@@ -10,10 +10,10 @@ typedef int tvec[100];
 void cargarLista(tvec lista,int *tam);
 void mostrarLista(tvec lista, int tam);
 void ordenarLista(tvec lista,int tam);
-int repiteMas(tvec lista, int tam);
+int repiteMenos(tvec lista,int tam);
 int buscarLista(tvec lista, int tam, int bus);
 void eliminarLista(tvec lista, int *tam, int pos);
-void mostrarVecino(tvec lista, int tam, int pos);
+void mostrarMultiplos(int k);
 void insertarLista(tvec lista, int *tam, int elem);
 
 	
@@ -30,8 +30,8 @@ int main() {
 	ordenarLista(lista,tam);
 	printf("\n Lista ordenada:");
 	mostrarLista(lista,tam);
-	num = repiteMas(lista,tam);
-	posi = buscarLista(lista,tam,num);
+	num = repiteMenos(lista,tam);
+	posi = buscarLista(lista,tam,num);	
 	while( posi != -1){
 		eliminarLista(lista,&tam,posi);
 		posi = buscarLista(lista,tam,num);
@@ -42,10 +42,10 @@ int main() {
 		printf("\n Ingrese numero k a buscar:");
 		scanf("%d",&k);
 		posi = buscarLista(lista,tam,k);
-		if ( posi != -1){
-			mostrarVecino(lista,tam,posi);
-		}
-		else{
+		if(posi != -1){
+			printf("\nSi se encuentra en la lista.");
+			mostrarMultiplos(k);
+		}else{
 			insertarLista(lista,&tam,k);
 			printf("\n Elemento insertado con exito:");
 			mostrarLista(lista,tam);
@@ -77,14 +77,14 @@ void mostrarLista(tvec lista, int tam){
 }
 
 /*
-	Ordena la lista usando el metodo de seleccion directa de mayor a menor.
+	Ordena la lista usando el metodo de seleccion directa de menor a mayor.
 */
 void ordenarLista(tvec lista, int tam){
 	int i,j,aux;
 	
 	for(i=1;i<=tam-1;i++){
 		for(j=i+1;j<=tam;j++){
-			if(lista[i] < lista[j]){
+			if(lista[j] < lista[i]){
 				aux = lista[j];
 				lista[j] = lista[i];
 				lista[i] = aux;
@@ -94,29 +94,34 @@ void ordenarLista(tvec lista, int tam){
 }
 
 /*
-	Retorna el valor del numero que mas se repite.
+	Retorna el valor del numero que menos se repite.
 	Considera que la lista esta ordenada.
 	Ejemplos.
-		repiteMas([1,1,1,2,2], 5) -> 1
-		repiteMas([2,2,5,5,5,5,7,7,8], 9) -> 5 
+		repiteMenos([1,1,1,2,2], 5) -> 2
+		repiteMenos([2,2,5,5,5,5,7,7,8], 9) -> 8 
 */
-int repiteMas(tvec lista,int tam){
-	int cont,i,j,mayor,num;
+int repiteMenos(tvec lista,int tam){
+	int cont, i, j, menor, num, band;
 	
 	cont=1;
 	i=1;
 	j=2;
-	mayor = cont;
+	band = 0;
 	num = lista[i];
 	while(i<=tam){
 		while(j<=tam && lista[i]==lista[j]){
 			cont = cont + 1;
 			j = j + 1;
 		}
-		if (cont > mayor){
-			mayor = cont;
+		if(band != 0){
+			if (cont < menor){
+				menor = cont;
+				num = lista[i];
+			}
+		}else{
+			menor = cont;
 			num = lista[i];
-		}
+		}		
 		i = j;
 		j = i +1;
 		cont = 1;
@@ -126,7 +131,7 @@ int repiteMas(tvec lista,int tam){
 
 /*
 	Busqueda binaria. Teniendo en cuenta que la lista esta
-	ordenada de mayor a menor.
+	ordenada de menor a mayor.
 */
 int buscarLista(tvec lista, int tam, int bus){
 	int ini,fin,m;
@@ -134,12 +139,12 @@ int buscarLista(tvec lista, int tam, int bus){
 	ini = 1;
 	fin = tam;
 	m = (ini+fin)/2;
-	while (ini<=fin && lista[m] != bus){
+	while (ini <= fin && lista[m] != bus){
 		if(lista[m] > bus){
-			ini = m+1;
+			fin = m - 1;
 		}
 		else{
-			fin = m-1;
+			ini = m + 1;
 		}
 		m = (ini+fin)/2;
 	}
@@ -162,28 +167,15 @@ void eliminarLista(tvec lista, int *tam, int pos){
 }
 
 /*
-	Muestra los vecinos de un elemento, dada la posicion.
+	Muestra los 10 primeros multiplos de un numero natural.
 	Ejemplos:
-		mostrarVecino([1, 2 ,3], 3, 2) -> "Vecino a la derecha 3", "Vecino a la izquierda 1"
-		mostrarVecino([1,2], 2, 2) -> "No tiene vecino a la derecha", "Vecino a la izquierda 1"
-		mostrarVecino([1], 1, 1) -> "No tiene vecinos"
+		mostrarMultiplos(2) -> [2, 4, 6 , 8, 10, 12, 14, 16, 18, 20]
 */
-void mostrarVecino(tvec lista, int tam, int pos){
-	if(tam != 1){
-		if (pos == 1){
-			printf("No tiene vecino a la izquierda.\n");
-			printf("Vecino a la derecha:%d \n",lista[pos+1]);
-		}
-		else if (pos == tam){
-			printf("Vecino a la izquierda:%d \n",lista[pos-1]);
-			printf("No tiene vecino a la derecha.\n");		
-		}
-		else {
-			printf("Vecino a la izquierda:%d \n",lista[pos-1]);
-			printf("Vecino a la derecha:%d \n",lista[pos+1]);
-		}	
-	}else{
-		printf("No tiene vecinos.\n");
+void mostrarMultiplos(int k){
+	int i;
+	
+	for(i = 1; i <= 10; i++){
+		printf("\nEl %d %c multiplo: %d", i, 167, i * k);
 	}
 }
 
@@ -196,7 +188,7 @@ void insertarLista(tvec lista, int *tam, int elem){
 		
 	lista[0] = elem;
 	i = *tam;
-	while( elem > lista[i]){
+	while( elem < lista[i]){
 		lista[i+1] = lista[i];
 		i = i - 1;
 	}

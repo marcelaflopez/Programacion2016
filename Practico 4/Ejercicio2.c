@@ -5,36 +5,33 @@ Autor: Fernando Orquera
 Año: 2017
 */
 
-typedef int tvec[100];
+typedef char tCadena[100];
+typedef int tFrecuencia[100];
 
-void cargarLista(tvec lista, int *tam);
-void mostrarLista(tvec lista, int tam);
-float mediaAritmetica(tvec lista, int tam);
-void insertarFrec(tvec lista, int *tam,int frec, int posi);
-void eliminarLista(tvec lista, int *tam ,int posi);
-void frecuenciaLista(tvec lista, int *tam);
-void mayorModa(tvec lista, int tam, int *moda, int *frecuencia);
-int modaUnica(tvec lista,int tam, int frecuencia);
-void indicarModa(int moda, int med);
-
+void cargarLista(tCadena lista, int *tam);
+void mostrarLista(tCadena lista, int tam);
+void eliminarLista(tCadena lista, int *tam ,int posi);
+void frecuenciaLista(tCadena lista, int *tam, tFrecuencia frec);
+void mayorModa(tFrecuencia lista, int tam, int *frecuencia, int *posicion);
+int modaUnica(tFrecuencia lista,int tam, int frecuencia);
 
 int main() {
 	
-	tvec lista;
-	int tam, moda, frecuencia, bmoda;
-	float mediaA;	
+	tCadena lista;
+	tFrecuencia lfrecuencia;
+	int tam, posicion, frecuencia, bmoda;;	
 	
 	cargarLista(lista, &tam);
 	printf("\n Mostrando la lista:");
 	mostrarLista(lista, tam);
-	mediaA=mediaAritmetica(lista, tam);
-	frecuenciaLista(lista, &tam);
+	frecuenciaLista(lista, &tam, lfrecuencia);
 	printf("\n Mostrando la lista compactada:");
 	mostrarLista(lista, tam);
-	mayorModa(lista, tam, &moda, &frecuencia);
-	bmoda = modaUnica(lista, tam, frecuencia);
+	mayorModa(lfrecuencia, tam, &frecuencia, &posicion);
+	bmoda = modaUnica(lfrecuencia, tam, frecuencia);
 	if(bmoda == 1){
-		indicarModa(moda, mediaA);
+		printf("\n La letra moda es: %c", lista[posicion]);
+		printf("\n Su frecuencia es : %d", frecuencia);
 	}else
 		printf("\n La moda no es unica.");
 	
@@ -42,64 +39,31 @@ int main() {
 }
 
 
-void cargarLista(tvec lista, int *tam){
+void cargarLista(tCadena lista, int *tam){
 	
 	int i;
 	
 	printf("\n Ingrese el tama%co de la lista:", 164);
 	scanf("%d",tam);
 	for(i = 1; i <= *tam; i++){
-		printf("\n Ingrese el %d %c elemento de la lista:", i, 167);
-		scanf("%d", &lista[i]);
+		printf("\n Ingrese la %d %c letra de la lista:", i, 167);
+		fflush(stdin);
+		scanf("%c", &lista[i]);
 	}
 }
 
-void mostrarLista(tvec lista, int tam){
+void mostrarLista(tCadena lista, int tam){
 	int i;
 	
 	for(i = 1 ; i <= tam; i++){
-		printf(" %d \t", lista[i]);
+		printf(" %c \t", lista[i]);
 	}
 }
 
 /*
-	Calcula la media aritmetica de una lista.
-	Ejemplos:
-		mediaAritmetica([3, 5, 7], 3) -> 5
-		mediaAritmetica([2, 5, 4], 3) -> 3.66
-		mediaAritmetica([], 0) -> 0
+Elimina un elemento de la lista dada una posicion.
 */
-float mediaAritmetica(tvec lista, int tam){
-	int i;
-	float sum;
-		
-	sum = 0;
-	for(i = 1; i <= tam; i++){
-		sum = sum + lista[i];
-	}
-	sum = sum / tam;
-	return sum;
-}
-
-/*
-	Inserta a la derecha de un elemento su frecuencia.
-	Ejemplos:
-		insertarFrec([1, 2, 2], 3, 3, 2) -> ([1, 3, 2, 2], 4)
-*/
-void insertarFrec(tvec lista, int *tam,int frec ,int posi){
-	int i;
-	
-	for(i = *tam; i >= posi ; i--){
-		lista[i+1] = lista[i];
-	}
-	lista[posi] = frec;
-	*tam = *tam + 1;
-}
-
-/*
-	Elimina un elemento de la lista dada una posicion.
-*/
-void eliminarLista(tvec lista, int *tam ,int posi){
+void eliminarLista(tCadena lista, int *tam ,int posi){
 	int i;
 	
 	for(i = posi; i <= *tam - 1; i++){
@@ -109,11 +73,11 @@ void eliminarLista(tvec lista, int *tam ,int posi){
 }
 
 /*
-	Calcula la frecuencia de cada elemento de la lista,
-	va eliminando cada repeticion y luego inserta
-	el valor de la frecuencia a la derecha de cada elemento
+Calcula la frecuencia de cada elemento de la lista,
+va eliminando cada repeticion y luego inserta
+la frecuencia en una lista nueva,
 */
-void frecuenciaLista(tvec lista, int *tam){
+void frecuenciaLista(tCadena lista, int *tam, tFrecuencia frec){
 	int i,j,cont;
 	
 	i = 1;
@@ -123,53 +87,52 @@ void frecuenciaLista(tvec lista, int *tam){
 		while(j <= *tam){
 			if(lista[i] == lista[j]){
 				cont = cont + 1;
-				eliminarLista(lista,tam,j);
+				eliminarLista(lista, tam, j);
 			}
 			else
 				j = j + 1;
 		}
-		insertarFrec(lista, tam, cont, i+1);
+		frec[i] = cont;
 		cont = 1;
-		i = i + 2;
+		i++;
 		j = i + 1;
 	}
 }
 
 /*
-	Retorna el valor con mayor moda y su frecuencia.
-	Tiene que recibir la lista con la frecuencua 
-	insertada a la derecha.
-	Ejemplos:
-		mayorModa([1, 3, 2, 1], 4) -> (1, 3)
-		mayorModa([3, 2, 5, 3, 1, 1], 6) -> (5, 3)	
+Retorna la mayor frecuencia y su posicion.
+Tiene que recibir la lista de frecuencias.
+Ejemplos:
+mayorModa([1, 3, 2, 1], 4) -> (3, 2)
+mayorModa([3, 2, 5, 3, 1, 1], 6) -> (5, 3)	
 */
-void mayorModa(tvec lista, int tam, int *moda, int *frecuencia){
+void mayorModa(tFrecuencia lista, int tam, int *frecuencia, int *posicion){
 	int i;
 	
-	*moda = lista[1];
-	*frecuencia = lista[2];
-	for(i = 4; i <= tam; i = i + 2){
+	*frecuencia = lista[1];
+	*posicion = 1;
+	for(i = 2; i <= tam; i++){
 		if(lista[i] > *frecuencia){
-			*moda = lista[i - 1];
 			*frecuencia = lista[i];
+			*posicion = i;
 		}
 	}
 }
 
 /*
-	Devuelve 1 si la moda es unica.
-	-1 si no lo es.
+Devuelve 1 si la moda es unica.
+-1 si no lo es.
 */
-int modaUnica(tvec lista,int tam, int frecuencia){
+int modaUnica(tFrecuencia lista,int tam, int frecuencia){
 	int i,band;
 	
 	band=0;
-	i=2;
-	while(i<= tam && band < 2){
+	i=1;
+	while(i <= tam && band < 2){
 		if (lista[i] == frecuencia){
 			band = band + 1;
 		}
-		i = i + 2;
+		i++;
 	}
 	if (band < 2 ){
 		return 1; /*La moda es unica*/
@@ -178,13 +141,4 @@ int modaUnica(tvec lista,int tam, int frecuencia){
 	}
 }
 
-void indicarModa(int moda, int med){
-	
-	if (moda > med){
-		printf("\n La moda (%d) es mayor a la media aritmetica (%d).", moda, med);		
-	}else if(moda < med){
-		printf("\n La moda (%d) es menor a la media aritmetica (%d).", moda, med);		
-	}else{
-		printf("\n La moda (%d) es igual a la media aritmetica (%d).", moda, med);
-	}
-}
+

@@ -2,9 +2,8 @@
 <br>
 
 <b>Ejercicio 2:</b> Dada una lista que contiene letras. Se solicita compactarla eliminando los repetidos, pero insertando en otra lista su frecuencia de aparición. Ejemplo: si la lista es a, B, d, a, h, B, B; la lista compactada será a, B, d, h y la lista de frecuencia 3, 2, 1, 1.<br>
-A partir de la lista compactada calcular la moda. Si la moda es única, indicar si es mayor, menor o igual a la media aritmética.<br>
+A partir de la lista de frecuencia calcular la moda.<br>
 <b>Moda:</b> es el valor con mayor frecuencia.<br>
-<b>Media Aritmética:</b> es el promedio de un conjunto de números, a1, a2, a3, . . ., an, obtenida sumando todos los números y dividiéndola entre la cantidad de números sumados..
 <br>
 
 <b>Ejercicio 3:</b> Dada una matriz de naturales de MxN, realizar un programa organizado con un menú que permita:<br>

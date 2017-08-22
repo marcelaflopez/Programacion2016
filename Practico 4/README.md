@@ -1,7 +1,7 @@
 <b>Ejercicio 1:</b> Dada una lista de números enteros, se solicita ordenar la misma de menor a mayor y posteriormente, eliminar el que menos veces se repite considerando que existe y es solo uno. Luego ingresar un número k e indicar si se encuentra en la lista y en cuyo caso, mostrar los 10 primeros multiplos de k. Si k no se encuentra en la lista, insertarlo manteniendo el orden.
 <br>
 
-<b>Ejercicio 2:</b> Dada una lista que contiene notas, entre 0 y 100, que obtuvieron N alumnos en un examen parcial. Se solicita compactarla eliminando los repetidos, pero insertando a derecha de cada número su frecuencia de aparición. Ejemplo: si la lista es 0, 90, 76, 0, 67, 90, 90; la lista compactada será 0, 2, 90, 3, 76, 1, 67, 1.<br>
+<b>Ejercicio 2:</b> Dada una lista que contiene letras. Se solicita compactarla eliminando los repetidos, pero insertando en otra lista su frecuencia de aparición. Ejemplo: si la lista es a, B, d, a, h, B, B; la lista compactada será a, B, d, h y la lista de frecuencia 3, 2, 1, 1.<br>
 A partir de la lista compactada calcular la moda. Si la moda es única, indicar si es mayor, menor o igual a la media aritmética.<br>
 <b>Moda:</b> es el valor con mayor frecuencia.<br>
 <b>Media Aritmética:</b> es el promedio de un conjunto de números, a1, a2, a3, . . ., an, obtenida sumando todos los números y dividiéndola entre la cantidad de números sumados..

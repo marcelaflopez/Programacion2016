@@ -14,9 +14,9 @@ typedef int tvec[20];
 int leeCad(Tcadena, int);
 void mostrarCadena(Tcadena cadena);
 void frecuencia(Tcadena cadena,Tcadena lista,tvec frec, int *n);
-int mayorFrec(tvec frec,int n);
-int cantM(Tcadena cadena);
-int cantm(Tcadena cadena);
+int menorFrec(tvec frec,int n);
+int cantV(Tcadena cadena);
+int cantv(Tcadena cadena);
 void trimCadena(Tcadena cadena);
 void eliminarCaracter(Tcadena cadena, int posi);
 int cantPal(Tcadena cadena); 
@@ -34,16 +34,16 @@ int main() {
 	
 	frecuencia(cadena, lista, frec, &tam);
 	if(tam > 0){
-		posi = mayorFrec(frec, tam);
-		printf("\nEl caracter que mas se repite es: %c", lista[posi]);
+		posi = menorFrec(frec, tam);
+		printf("\nEl caracter que menos se repite es: %c", lista[posi]);
 		
 	}else{
 		printf("\nLa cadena esta vacia!");
 	}
 	
 	trimCadena(cadena);
-	printf("\nLa cantidad de mayusculas: %d", cantM(cadena));
-	printf("\nLa cantidad de minusculas: %d", cantm(cadena));	
+	printf("\nLa cantidad de vocales mayusculas: %d", cantV(cadena));
+	printf("\nLa cantidad de vocales minusculas: %d", cantv(cadena));	
 	printf("\nCantidad de palabras: %d", cantPal(cadena));
 	
 	return 0;
@@ -103,19 +103,19 @@ void frecuencia(Tcadena cadena,Tcadena lista, tvec frec,int *n){
 }
 
 /*
-	Retorna la posicion del caracter que mas se repite.
+	Retorna la posicion del caracter que menos se repite.
 	Recibe el vector con las frecuencias de cada caracter.
 	Ejemplo:
-		mayorFrec([1,4,5,2], 4) -> 3
+		menorFrec([1,4,5,2], 4) -> 1
 */
-int mayorFrec(tvec frec,int n){
-	int i, mayor, posi;
+int menorFrec(tvec frec,int n){
+	int i, menor, posi;
 	
-	mayor = frec[1];
+	menor = frec[1];
 	posi = 1;
 	for(i = 1; i <= n; i++){
-		if(frec[i] > mayor){
-			mayor = frec[i];
+		if(frec[i] < menor){
+			menor = frec[i];
 			posi = i;
 		}
 	}
@@ -123,16 +123,16 @@ int mayorFrec(tvec frec,int n){
 }
 
 /*
-	Retorna la cantidad de mayusculas.
+	Retorna la cantidad de vocales mayusculas.
 	Ejemplo:
-		cantM("Hola Mundo") -> 2
+		cantM("HolA MUndo") -> 2
 */
-int cantM(Tcadena cadena){
+int cantV(Tcadena cadena){
 	int i,cont;
 	
 	cont = 0;
 	for(i = 0; i < strlen(cadena); i++){
-		if(cadena[i] >= 'A' && cadena[i] <= 'Z'){
+		if(cadena[i] == 'A' || cadena[i] == 'E' || cadena[i] == 'I' || cadena[i] == 'O' || cadena[i] == 'U'){
 			cont = cont + 1;
 		}
 	}
@@ -140,16 +140,16 @@ int cantM(Tcadena cadena){
 }
 
 /*
-	Retorna la cantidad de minusculas.
+	Retorna la cantidad de vocales minusculas.
 	Ejemplo:
-		cantm("Hola Mundo") -> 7
+		cantm("Hola Mundo") -> 4 
 */
-int cantm(Tcadena cadena){
+int cantv(Tcadena cadena){
 	int i,cont;
 	
 	cont = 0;
 	for(i = 0; i < strlen(cadena); i++){
-		if(cadena[i] >= 'a' && cadena[i] <= 'z'){
+		if(cadena[i] == 'a' || cadena[i] == 'e' || cadena[i] == 'i' || cadena[i] == 'o' || cadena[i] == 'u'){
 			cont = cont + 1;
 		}
 	}
@@ -194,7 +194,7 @@ void eliminarCaracter(Tcadena cadena, int posi){
 
 /*
 	Devuelve la cantidad de palabras, si se ingresaron solo espacios en blanco devuelve 0.
-	Espera una cadena sin espacion en blanco adelante o al final.
+	Espera una cadena sin espacios en blanco adelante o al final.
 	Ejemplos:
 		cantidadPal("hola mundo") -> 2
 		cantidadPal("hola") -> 1

@@ -7,11 +7,11 @@ A partir de la lista de frecuencia calcular la moda.<br>
 <br>
 
 <b>Ejercicio 3:</b> Dada una matriz de naturales de MxN, realizar un programa organizado con un menú que permita:<br>
-* 1. Eliminar una fila de la matriz.<br>
+* 1. Eliminar una columna de la matriz.<br>
 * 2. Insertar una nueva fila.<br>
 * 3. Insertar una nueva columna.<br>
-* 4. Ordenar sólo una fila de la matriz.<br>
-* 5. Ordenar una fila preservando las columnas.
+* 4. Ordenar sólo una columna de la matriz.<br>
+* 5. Ordenar una columna preservando las filas.
 <br>
 
 <b>Ejercicio 4:</b> Dada una cadena de caracteres, que representa una frase, realizar un programa que determine:<br>

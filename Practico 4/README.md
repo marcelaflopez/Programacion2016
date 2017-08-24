@@ -17,7 +17,7 @@ A partir de la lista de frecuencia calcular la moda.<br>
 <b>Ejercicio 4:</b> Dada una cadena de caracteres, que representa una frase, realizar un programa que determine:<br>
 * 1. Cantidad total de caracteres.<br>
 * 2. El carácter que menos se repite. Se supone único.<br>
-* 3. La cantidad de vocales.<br>
+* 3. La cantidad de vocales minusculas y mayusculas.<br>
 * 4. La cantidad de palabras separadas por espacio en blanco.
 <br>
 

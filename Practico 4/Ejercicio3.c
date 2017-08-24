@@ -10,11 +10,11 @@ typedef int tmat[100][100];
 int menu();
 void cargarMatriz(tmat mat, int *n, int *m);
 void mostrarMatriz(tmat mat, int n, int m);
-void eliminarFila(tmat mat, int *n, int m, int posi);
+void eliminarColumna(tmat mat, int n, int *m, int posi);
 void insertarFila(tmat mat, int *n, int m);
 void insertarCol(tmat mat, int n, int *m);
-void ordenarFila(tmat mat, int posi, int m);
-void ordenarFilaC(tmat mat, int n, int m ,int posi);
+void ordenarColumna(tmat mat, int posi, int m);
+void ordenarColumnaF(tmat mat, int n, int m ,int posi);
 
 
 int main() {
@@ -37,9 +37,9 @@ int main() {
 				break;
 			case 3:
 				if(n > 0){
-					printf("\n Ingrese fila a eliminar:");
+					printf("\n Ingrese columna a eliminar:");
 					scanf("%d",&posi);
-					eliminarFila(mat, &n, m, posi);
+					eliminarColumna(mat, n, &m, posi);
 				}else{
 					printf("No hay matriz!\n");
 				}
@@ -52,18 +52,18 @@ int main() {
 				break;
 			case 6:
 				if(n > 0){
-					printf("\n Ingrese fila a ordenar:");
+					printf("\n Ingrese columna a ordenar:");
 					scanf("%d", &posi);
-					ordenarFila(mat, posi, m);
+					ordenarColumna(mat, posi, m);
 				}else{
 					printf("No hay matriz!\n");
 				}
 				break;
 			case 7:
 				if(n > 0){
-					printf("\n Ingrese fila a ordenar,manteniendo columnas:");
+					printf("\n Ingrese columna a ordenar,manteniendo filas:");
 					scanf("%d",&posi);
-					ordenarFilaC(mat, n, m, posi);
+					ordenarColumnaF(mat, n, m, posi);
 				}else{
 					printf("No hay matriz!\n");
 				}
@@ -80,11 +80,11 @@ int menu(){
 	do{
 		printf("1 - Cargar Matriz.\n");
 		printf("2 - Mostrar Matriz.\n");
-		printf("3 - Eliminar una fila de la Matriz.\n");
+		printf("3 - Eliminar una columna de la Matriz.\n");
 		printf("4 - Insertar una nueva fila.\n");
 		printf("5 - Insertar una nueva columna.\n");
-		printf("6 - Ordenar una fila.\n");
-		printf("7 - Ordenar una fila preservando las columnas.\n");
+		printf("6 - Ordenar una columna.\n");
+		printf("7 - Ordenar una columna preservando las filas.\n");
 		printf("0 - Salir.\n");
 		printf("\nOpcion: ");
 		scanf("%d", &op);
@@ -124,20 +124,20 @@ void mostrarMatriz(tmat mat, int n, int m){
 /*
 	Elimina una fila de la matriz.
 	Ejemplo:
-	eliminarFila([1, 2, 3  , 3, 3, 2) -> ([1, 2, 3), 2, 3) 
-				  4, 5, 6				   7, 8 ,9]
-				  7, 8 ,9]
+	eliminarColumna([1, 2, 3  , 3, 3, 2) -> ([1, 3), 3, 2) 
+				     4, 5, 6				  4, 6
+				     7, 8 ,9]				  7, 9]
 */
-void eliminarFila(tmat mat, int *n, int m, int posi){
+void eliminarColumna(tmat mat, int n, int *m, int posi){
 	
 	int i,j;
 	
-	for(i = posi; i <= *n - 1; i++){
-		for(j = 1; j <= m; j++){
-			mat[i][j] = mat[i+1][j];
+	for(j = posi; j <= *m - 1; j++){
+		for(i = 1; i <= n; i++){
+			mat[i][j] = mat[i][j + 1];
 		}
 	}
-	*n = *n -1;
+	*m = *m -1;
 }
 
 /*
@@ -179,42 +179,42 @@ void insertarCol(tmat mat, int n, int *m){
 /*
 	Ordena una fila de la matriz.
 	Ejemplo:
-		eliminarFila([1, 2, 3  , 2, 3) -> ([1, 2, 3) ) 
-					  6, 4, 5				4, 5, 6
-					  7, 8 ,9]              7, 8, 9]  
+		ordenarColumna([1, 4, 3  , 2, 3) -> ([1, 2, 3) ) 
+					    6, 8, 5				  6, 4, 5
+					    7, 2 ,9]              7, 8, 9]  
 */
-void ordenarFila(tmat mat, int posi, int m){
+void ordenarColumna(tmat mat, int posi, int m){
 	int i,j,aux;
 	
 	for(i = 1; i <= m - 1; i++){
 		for(j = i + 1; j <= m; j++){
-			if( mat[posi][j] < mat[posi][i]){
-				aux = mat[posi][j];
-				mat[posi][j] = mat[posi][i];
-				mat[posi][i] = aux;
+			if( mat[j][posi] < mat[i][posi]){
+				aux = mat[j][posi];
+				mat[j][posi] = mat[i][posi];
+				mat[i][posi] = aux;
 			}
 		}
 	}
 }
 
 /*
-	Ordena una fila de la matriz, pero preservando
-	las columnas.
+	Ordena una columna de la matriz, pero preservando
+	las filas.
 	Ejemplo:
-		eliminarFila([1, 2, 3  , 2, 3) -> ([2, 3, 1) ) 
-					  6, 4, 5				4, 5, 6
-					  7, 8 ,9]              8, 9, 7] 
+		ordenarColumnaF([1, 4, 3  , 3, 3, 2) -> ([7, 2, 9) ) 
+					     6, 8, 5			      1, 4, 3
+					     7, 2 ,9]                 6, 8, 5] 
 */
-void ordenarFilaC(tmat mat, int n, int m ,int posi){
+void ordenarColumnaF(tmat mat, int n, int m ,int posi){
 	int i,j,aux,k;
 	
-	for(i = 1; i <= m - 1; i++){
-		for(j = i + 1; j <= m; j++){
-			if( mat[posi][j] < mat[posi][i]){
-				for(k = 1; k <= n; k++){					
-					aux = mat[k][i];
-					mat[k][i] = mat[k][j];
-					mat[k][j] = aux;
+	for(i = 1; i <= n - 1; i++){
+		for(j = i + 1; j <= n; j++){
+			if( mat[j][posi] < mat[i][posi]){
+				for(k = 1; k <= m; k++){					
+					aux = mat[i][k];
+					mat[i][k] = mat[j][k];
+					mat[j][k] = aux;
 				}
 			}
 		}

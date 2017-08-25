@@ -21,15 +21,15 @@ A partir de la lista de frecuencia calcular la moda.<br>
 * 4. La cantidad de palabras separadas por espacio en blanco.
 <br>
 
-<b>Ejercicio 5:</b> Un banco lleva la información de sus clientes en un array de registros, ordenados por número de
-cuenta.<br>
-De cada cliente se almacena la siguiente información:<br>
-* ❖ Número de cuenta,<br>
+<b>Ejercicio 5:</b> Saeta lleva la información de sus usuarios en un array de registros, ordenados por número de
+tarjeta.<br>
+De cada usuario se almacena la siguiente información:<br>
+* ❖ Número de tarjeta,<br>
 * ❖ Nombre del cliente,<br>
-* ❖ Saldo de la cuenta.<br>
+* ❖ Saldo de la tarjeta.<br>
 Se solicita escribir un programa que permita mediante un menú:<br>
-* a) Realizar un depósito (es decir, dado un monto a depositar y una cuenta actualizar el saldo).<br>
-* b) Realizar un retiro (es decir, dado un monto a retirar y una cuenta actualizar el saldo).
+* a) Realizar una carga (es decir, dado un monto a cargar y un numero de tarjeta actualizar el saldo).<br>
+* b) Realizar un retiro (es decir, dado un monto a cobrar y un numero de tarjeta actualizar el saldo).
 <br>
 
 <b>Ejercicio 6:</b> Un banco lleva la información de sus clientes en un array de registros, ordenados por número de

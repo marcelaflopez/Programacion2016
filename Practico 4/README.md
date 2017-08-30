@@ -49,9 +49,9 @@ Actualizar el domicilio (es decir, dada una cuenta modificar los datos).
 
 <b>Ejercicio 7:</b> Dada una lista de Personas con los siguientes datos: DNI, Nombre y Edad. Realizar un menú
 que permita:<br>
-* 1. Mostrar la cantidad de personas con edad menor a 18 años y mayor a 30 años.<br>
-* 2. Mostrar las edades sin elementos repetidos (la lista depurada) y su frecuencia de aparición.<br>
-* 3. Dado un DNI eliminar de la lista sus datos.<br>
+* 1. Mostrar la cantidad de personas con edad mayor a 18 años y menor a 30 años.<br>
+* 2. Mostrar los nombres sin elementos repetidos (la lista depurada) y su frecuencia de aparición.<br>
+* 3. Dado un nombre, eliminar de la lista todos los que tengan ese nombre.<br>
 * 4. Insertar una nueva persona.<br>
 * 5. Dado un DNI buscar los datos y mostrarlos.<br>
 * 6. Mostrar la lista completa.

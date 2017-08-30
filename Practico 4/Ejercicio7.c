@@ -11,6 +11,7 @@ const int tam_max=20;
 
 typedef char Tcadena[20];
 typedef int tVector[50];
+typedef char tNombres[50][20];
 
 typedef struct{
 	long int dni;
@@ -28,18 +29,21 @@ void cargarLista(tLista lista,int *tam);
 void mostrarLista(tLista lista,int tam);
 void mostrarPersonasEdad(tLista lista, int tam);
 int cantidadPersonasRangoEdad(tLista lista, int tam, int A, int B);
-void edadesDepuradas(tLista lista, int tam, tVector vectorEdades, tVector vectorFrecuencia, int *tama);
-void mostrarEdades(tVector edades, tVector frecuencia, int tam);
-int busquedaEdad(tVector vectorEdades, int tam, int buscado);
-int buscarCliente(tLista lista, int tam, int dniBuscado);
+void nombresDepuradas(tLista lista, int tam, tNombres vectorNombres, tVector vectorFrecuencia, int *tama);
+void mostrarNombres(tNombres nombres, tVector frecuencia, int tam);
+int busquedaNombre(tNombres vectorNombres, int tam, Tcadena buscado);
+int buscarCliente(tLista lista, int tam, Tcadena nombreBuscado);
+int buscarDNI(tLista lista, int tam, int dniBuscado);
 void eliminarCliente(tLista lista, int *tam, int posicion);
 
 int main(){
 	
 	tLista lista;
-	tVector edades, frecuencia;
+	tVector frecuencia;
+	tNombres nombres;
 	int tam, posicion, opcion, tama;
-	long int dni;	
+	long int dni;
+	Tcadena nombre;
 	tCliente aux;
 	
 	tam = 0;
@@ -62,19 +66,23 @@ int main(){
 				break;
 			case 3:
 				if(tam > 0){
-					edadesDepuradas(lista, tam, edades, frecuencia, &tama);
-					mostrarEdades(edades, frecuencia, tama);
+					nombresDepuradas(lista, tam, nombres, frecuencia, &tama);
+					mostrarNombres(nombres, frecuencia, tama);
 				}else{
 					printf("Las personas no fueron cargadas.\n");
 				}				
 				break;
 			case 4:
 				if(tam > 0){
-					printf("\n Ingrese DNI de la persona a buscar:");
-					scanf("%ld",&dni);
-					posicion = buscarCliente(lista, tam, dni);
+					printf("\n Ingrese nombre :");
+					fflush(stdin);
+					leeCad(nombre, tam_max);
+					posicion = buscarCliente(lista, tam, nombre);					
 					if(posicion != -1){
-						eliminarCliente(lista, &tam, posicion);
+						while(posicion != -1){
+							eliminarCliente(lista, &tam, posicion);
+							posicion = buscarCliente(lista, tam, nombre);
+						}
 						mostrarLista(lista, tam);
 					}else{
 						printf("\n La persona no existe.");
@@ -85,9 +93,9 @@ int main(){
 				break;
 			case 5:
 				aux = cargarUno();
-				if (buscarCliente(lista, tam, aux.dni) != 1){
+				if (buscarDNI(lista, tam, aux.dni) != 1){
 					tam = tam + 1;
-					lista[tam] = cargarUno();
+					lista[tam] = aux;
 				}else{
 					printf("La persona ya se encuentra registrada.");
 				}							
@@ -96,7 +104,7 @@ int main(){
 				if(tam > 0){
 					printf("\n Ingrese DNI de la persona a buscar:");
 					scanf("%ld",&dni);
-					posicion = buscarCliente(lista, tam, dni);
+					posicion = buscarDNI(lista, tam, dni);
 					if(posicion != -1){
 						mostrarUno(lista[posicion]);
 					}else{
@@ -121,8 +129,8 @@ int menu(){
 	do{
 		printf("\n1 - Cargar Personas.\n");
 		printf("2 - Mostrar Cantidad de personas en cierto rango de edad.\n");
-		printf("3 - Mostrar edades y su frecuencias de aparicion.\n");
-		printf("4 - Elminar una persona\n");
+		printf("3 - Mostrar nombres y su frecuencias de aparicion.\n");
+		printf("4 - Elminar personas con el mismo nombre\n");
 		printf("5 - Insertar una nueva persona.\n");
 		printf("6 - Buscar una persona.\n");
 		printf("7 - Mostrar las personas\n");
@@ -215,18 +223,18 @@ void mostrarPersonasEdad(tLista lista, int tam){
 	scanf("%d", &A);
 	printf("\nIngrese un valor para limite superior :");
 	scanf("%d", &B);
-	printf("\nCantidad de personas fuera del rango [%d, %d] de edad: %d", A, B, cantidadPersonasRangoEdad(lista, tam, A, B));
+	printf("\nCantidad de personas dentro del rango [%d, %d] de edad: %d", A, B, cantidadPersonasRangoEdad(lista, tam, A, B));
 }
 
 /*
-	Retorna la cantidad de personas con edad fuera del rango [A,B].
+	Retorna la cantidad de personas con edad dentro del rango [A,B].
 */
 int cantidadPersonasRangoEdad(tLista lista, int tam, int A, int B){
 	int cantidad, i;
 	
 	cantidad = 0;
 	for(i = 1; i <= tam; i++){
-		if(lista[i].edad < A || lista[i].edad > B){
+		if(lista[i].edad >= A && lista[i].edad <= B){
 			cantidad++;
 		}
 	}
@@ -235,18 +243,18 @@ int cantidadPersonasRangoEdad(tLista lista, int tam, int A, int B){
 }
 
 /*
-	Retorna dos vectores asociados, uno conteniendo las edades sin repetir,
+	Retorna dos vectores asociados, uno conteniendo las nombres sin repetir,
 	y el otro conteniendo la frecuencia.
 */
-void edadesDepuradas(tLista lista, int tam, tVector vectorEdades, tVector vectorFrecuencia, int *tama){
+void nombresDepuradas(tLista lista, int tam, tNombres vectorNombres, tVector vectorFrecuencia, int *tama){
 	int i, posicion;
 	
 	*tama = 0;
 	for(i = 1; i <= tam; i++){
-		posicion = busquedaEdad(vectorEdades, *tama, lista[i].edad);
+		posicion = busquedaNombre(vectorNombres, *tama, lista[i].nombre);
 		if(posicion == -1){
 			*tama = *tama + 1;
-			vectorEdades[*tama] = lista[i].edad;
+			strcpy(vectorNombres[*tama], lista[i].nombre);
 			vectorFrecuencia[*tama] = 1;
 		}else{
 			vectorFrecuencia[posicion] = vectorFrecuencia[*tama] + 1;
@@ -254,11 +262,11 @@ void edadesDepuradas(tLista lista, int tam, tVector vectorEdades, tVector vector
 	}
 }
 
-void mostrarEdades(tVector edades, tVector frecuencia, int tam){
+void mostrarNombres(tNombres nombres, tVector frecuencia, int tam){
 	int i;
 	
 	for(i = 1; i <= tam; i++){
-		printf("\nEdad: %d ", edades[i]);
+		printf("\nNombre: %s ", nombres[i]);
 		printf("Frecuencia: %d ", frecuencia[i]);
 	}
 }
@@ -267,11 +275,11 @@ void mostrarEdades(tVector edades, tVector frecuencia, int tam){
 	Retorna la posicion, si encontro el buscado.
 	Retorna -1 caso contrario.
 */
-int busquedaEdad(tVector vectorEdades, int tam, int buscado){
+int busquedaNombre(tNombres vectorNombres, int tam, Tcadena buscado){
 	int i;
 	
 	i = 1;
-	while(i <= tam && vectorEdades[i] != buscado){
+	while(i <= tam && strcmp(vectorNombres[i], buscado) != 0){
 		i++;
 	}
 	if(i <= tam){
@@ -284,7 +292,23 @@ int busquedaEdad(tVector vectorEdades, int tam, int buscado){
 /*
 	Busqueda secuencial.
 */
-int buscarCliente(tLista lista, int tam, int dniBuscado){
+int buscarCliente(tLista lista, int tam, Tcadena nombreBuscado){
+	int i;
+	
+	i = 1;
+	while(i <= tam && strcmp(lista[i].nombre, nombreBuscado) != 0){
+		i++;
+	}
+	if(i <= tam){
+		return i;
+	}else
+		return -1;
+}
+
+/*
+Busqueda secuencial.
+*/
+int buscarDNI(tLista lista, int tam, int dniBuscado){
 	int i;
 	
 	i = 1;

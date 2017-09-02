@@ -9,14 +9,14 @@ Año: 2017
 
 const int tam_max=50;
 
-typedef char Tcadena[100]; 
+typedef char Tcadena[100];
 
 void cargarNumero(Tcadena numero);
 int validarNumero(Tcadena numero);
 void completarNumero(Tcadena numero1, Tcadena numero2);
-void sumarNumeros(Tcadena numero1, Tcadena numero2, Tcadena resultado);
-void sumaAcarreo(char a, char b, int *acarreo, char *resultado);
-int sumarCaracteres(char a, char b);
+void multiplicarNumeros(Tcadena numero1, Tcadena numero2, Tcadena resultado);
+int multiplicarCaracteres(char a, char b);
+void inicializar(Tcadena cadena, int tam);
 void insertar(Tcadena cadena, char c);
 
 
@@ -26,7 +26,7 @@ int main(){
 	cargarNumero(numero1);
 	cargarNumero(numero2);
 	completarNumero(numero1, numero2);	
-	sumarNumeros(numero1, numero2, resultado);
+	multiplicarNumeros(numero1, numero2, resultado);
 	printf("El resultado de la suma es: %s", resultado);
 	
 	return 0;
@@ -115,47 +115,56 @@ void completarNumero(Tcadena numero1, Tcadena numero2){
 	Suma los numeros representados en las cadenas.
 	Y retorna el resultado en otra cadena.
 */
-void sumarNumeros(Tcadena numero1, Tcadena numero2, Tcadena resultado){
-	int i, acarreo;
-	char caracter;
-		
-	i = 0;	
-	acarreo = 0;
-	for(i = strlen(numero1) - 1; i >= 0 ; i--){
-		sumaAcarreo(numero1[i], numero2[i], &acarreo, &caracter);
-		insertar(resultado, caracter);
-	}
-	if(acarreo == 1){
-		insertar(resultado, '1');
-	}
-}
-
-/*
-	Suma dos caracteres, devolviendo el acarreo y el resultado.
-*/
-void sumaAcarreo(char a, char b, int *acarreo, char *resultado){
-	int tmp;
+void multiplicarNumeros(Tcadena numero1, Tcadena numero2, Tcadena resultado){
+	int i, j, mover, iter, tam, aux, cf, dig, r, tamR;	
 	
-	tmp = sumarCaracteres(a, b);
-	tmp = tmp + * acarreo;
-	*acarreo = tmp / 10;
-	tmp = tmp % 10;
-	*resultado = tmp + '0';
+	iter = 0;
+	mover = 0;
+	tam = strlen(numero1) - 1;
+	tamR = (tam + 1) * 2;
+	inicializar(resultado, tamR);
+	for(i = tam; i >= 0 ; i--){
+		cf = 0;
+		for(j = tam; j >= 0; j--){
+			aux = multiplicarCaracteres(numero1[i], numero2[j]);
+			dig = resultado[tamR - 1 + mover] - '0';
+			aux = aux + cf + dig;
+			r = aux % 10;
+			cf = aux / 10;
+			cf = cf % 10;
+			resultado[tamR - 1 + mover] = r + '0';
+			mover--;
+		}
+		resultado[tamR - 1 + mover] = cf + '0';
+		iter--;
+		mover = iter;
+	}
 }
 
-
 /*
-	Suma dos caracteres
+	Multiplica dos caracteres
 */
-int sumarCaracteres(char a, char b){
+int multiplicarCaracteres(char a, char b){
 	int dig1, dig2;
 	
 	dig1 = a - '0';
 	dig2 = b - '0';
-	return dig1 + dig2;
+	return dig1 * dig2;
 }
 /*
-	Inserta un caracter en una cadena cadena.
+	Inicializa la cadena donde se guarda el resultado.
+*/
+void inicializar(Tcadena cadena, int tam){
+	int i;
+	
+	cadena[tam] = cadena[0];
+	for(i = tam - 1 ; i >= 0;i--){
+		cadena[i]='0';
+	}
+}
+
+/*
+Inserta un caracter en una cadena cadena.
 */
 void insertar(Tcadena cadena, char c){
 	int i;

@@ -4,7 +4,7 @@
 
 /*
 Autor: Fernando Orquera
-Año: 2017
+AÃ±o: 2017
 */
 
 const int tam_max=50;
@@ -112,7 +112,7 @@ void completarNumero(Tcadena numero1, Tcadena numero2){
 }
 
 /*
-	Suma los numeros representados en las cadenas.
+	Multiplica los numeros representados en las cadenas.
 	Y retorna el resultado en otra cadena.
 */
 void multiplicarNumeros(Tcadena numero1, Tcadena numero2, Tcadena resultado){

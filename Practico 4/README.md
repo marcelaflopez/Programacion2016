@@ -66,7 +66,7 @@ que permita:<br>
 <br>
 
 <b>Ejercicio 9:</b> Dados dos números grandes, tan grandes que no pueden almacenarse en variables de tipo long
-se sugiere introducir cada número como una cadena de caracteres y realizar la suma extrayendo los dígitos
+se sugiere introducir cada número como una cadena de caracteres y realizar la multiplicacion extrayendo los dígitos
 de ambas cadenas.
 <br>
 

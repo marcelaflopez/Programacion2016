@@ -103,6 +103,6 @@ septiembre del 2016), listar todas ventas de vehículos realizadas con anteriori
 <br>
 
 <b>Ejercicio 12:</b> Dada una matriz de caracteres que representa una sopa de letras, crear un programa que
-permita encontrar un conjunto dado de palabras.<br>
+permita encontrar un conjunto dado de palabras, mostrar la cantidad de veces que las palabras aparecen en la sopa de letras.<br>
 Las palabras en la sopa pueden estar escritas en forma vertical (de izquierda a derecha o al revés) u horizontal
 (de arriba hacia abajo o al revés).

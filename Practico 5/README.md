@@ -1,4 +1,4 @@
-<b>Ejercicio 1:</b> El hotel Premium lleva un registro, ordenado por DNI, de las reservas, a medida que las personas las solicitan. Los datos que registra son: DNI, Apellido y Nombre, fecha de Ingreso, Cantidad de días, Número de habitación, tipo (Single, Doble o Triple).<br>.
+<b>Ejercicio 1:</b> El hotel Premium lleva un registro, ordenado por DNI, de las reservas, a medida que las personas las solicitan. Los datos que registra son: DNI, Apellido y Nombre, fecha de Ingreso, Cantidad de días, Número de habitación, tipo (Single, Doble o Triple).<br>
 Se reserva con el pago por adelantado de al menos el 50% del total a pagar. Desarrollar un programa que permita:<br>
 * a) Dado el DNI de una persona, informar cuánto debe abonar teniendo en cuenta que el precio de una habitación por día es: $800 (Single), $990 (Doble), $1500 (triple).<br>
 * b) Dado un número de habitación mostrar los datos de la persona que la reservó.<br>

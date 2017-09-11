@@ -1,4 +1,7 @@
-<b>Ejercicio 1:</b> Dada una lista de números enteros, se solicita ordenar la misma de menor a mayor y posteriormente, eliminar el que menos veces se repite considerando que existe y es solo uno. Luego ingresar un número k e indicar si se encuentra en la lista y en cuyo caso, mostrar los 10 primeros multiplos de k. Si k no se encuentra en la lista, insertarlo manteniendo el orden.
+<b>Ejercicio 1:</b> El hotel Premium lleva un registro, ordenado por DNI, de las reservas, a medida que las personas las solicitan. Los datos que registra son: DNI, Apellido y Nombre, fecha de Ingreso, Cantidad de días, Número de habitación, tipo (Single, Doble o Triple).<br>.
+Se reserva con el pago por adelantado de al menos el 50% del total a pagar. Desarrollar un programa que permita:<br>
+* a) Dado el DNI de una persona, informar cuánto debe abonar teniendo en cuenta que el precio de una habitación por día es: $800 (Single), $990 (Doble), $1500 (triple).<br>
+* b) Dado un número de habitación mostrar los datos de la persona que la reservó.<br>
 <br>
 
 <b>Ejercicio 2:</b> Dada una lista que contiene letras. Se solicita compactarla eliminando los repetidos, pero insertando en otra lista su frecuencia de aparición. Ejemplo: si la lista es a, B, d, a, h, B, B; la lista compactada será a, B, d, h y la lista de frecuencia 3, 2, 1, 1.<br>

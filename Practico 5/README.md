@@ -10,10 +10,10 @@ Implemente dos soluciones:<br>
 * b) Crear un módulo que mantenga la lista ordenada por localidad y en caso de igualdad ordene por valor de contrato. Considerar que la lista se recibe ordenada por localidad.
 <br>
 
-<b>Ejercicio 3:</b> Dada una matriz de naturales de MxN, realizar un programa organizado con un menú que permita:<br>
-* 1. Eliminar una columna de la matriz.<br>
-* 2. Insertar una nueva fila.<br>
-* 3. Insertar una nueva columna.<br>
-* 4. Ordenar sólo una columna de la matriz.<br>
-* 5. Ordenar una columna preservando las filas.
+<b>Ejercicio 6:</b> Un taller mecánico lleva un registro diario de los N vehículos que ingresan para su reparación en un arreglo de registros. Los datos que registra por cada vehículo son: Código, N° Patente, Modelo, Descripción de la falla, DNI del dueño, Apellido del dueño, Nombre del dueño, Teléfono, Estado final del vehículo. Se pide realizar un programa que permita ingresar la lista con los datos de los N vehículos, crear dos índices uno por código y otro por patente y posteriormente, presentar un menú que permita:<br>
+* A. Ingresar un nuevo vehículo.<br>
+* B. Dado el código de un vehículo, eliminarlo.<br>
+* C. Dado el código de un vehículo, modificar su descripción.<br>
+* D. Mostrar el listado de vehículos ordenado por Nº de Patente.<br>
+* E. Mostrar el listado de vehículos ordenado por DNI del dueño. En caso de que un dueño posea más de un vehículo, mostrar esos vehículos ordenados por Nº de Patente.
 <br>

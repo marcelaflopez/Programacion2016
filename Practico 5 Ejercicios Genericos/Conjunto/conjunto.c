@@ -25,10 +25,10 @@ void insertarUno(tConjunto *reg){
 		reg->tam = reg->tam + 1;
 		reg->conjunto[reg->tam] = nuevo;
 	}else
-		printf("\nEl elemento ya pertenece al conjunto");		
+		printf("\nEl elemento ya pertenece al conjunto"); /*NO ME PARECE QUE SE DEBA MOSTRAR ESTE MENSAJE...*/		
 }
 
-void eliminarUno(tConjunto *reg){
+void eliminarUno(tConjunto *reg){ /*SI INSERTA UNO YA ES UNA OPERACIÓN "RARA" PARA CONJUNTO, ELIMINA UNO LO ES AÚN MAS... NO CONSIDERO QUE SEA UN MÓDULO PÚBLICO*/
 	tElemento elemento;
 	int posicion;
 	
@@ -46,7 +46,8 @@ int privbuscarUno(tLista conjunto, int tam, tElemento elemento){
 	int i, respuesta;
 	
 	i = 1;
-	while(i <= tam && retornarElemento(conjunto[i]) != retornarElemento(elemento))
+	while(i <= tam && retornarElemento(conjunto[i]) != retornarElemento(elemento)) /*SERÍA MAS GENÉRICO UTILIZAR UNA OPERACIÓN QUE COMPARE DOS 
+											ELEMENTOS EN EL TAD_ELEMENTO Y NO COMPRAR EN ESE TAD*/
 		i++;
 	if(i <= tam)
 		respuesta = i;
@@ -68,7 +69,7 @@ int pertenece(tConjunto reg, tElemento elemento){
 	int i, respuesta;
 	
 	i = 1;
-	while(i <= reg.tam && retornarElemento(reg.conjunto[i]) != retornarElemento(elemento))
+	while(i <= reg.tam && retornarElemento(reg.conjunto[i]) != retornarElemento(elemento)) /*YA COMENTADO ANTERIORMENTE*/
 		i++;
 	if(i <= reg.tam)
 		respuesta = 1;

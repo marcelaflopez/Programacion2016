@@ -18,7 +18,7 @@ int main(){
 				printf("\nLa lista esta llena.");
 			break;
 		case 2:
-			printf("\nIngrese DNI a buscar:");
+			printf("\nIngrese DNI a buscar:");/*SE PUEDE TENER UN MÓDULO EN ALUMNO QUE BUSQUE DNI*/
 			scanf("%d", &buscado);
 			modificarAlumno(&reg, buscado);
 			break;

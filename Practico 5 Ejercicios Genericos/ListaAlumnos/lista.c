@@ -36,6 +36,8 @@ void insertarOrdenado(tLista *reg){
 	nuevo = cargarUno();
 	j = reg->tam;
 	while (j > 0 && retornarDNI(nuevo) < retornarDNI(reg->lista[j])){
+		/*ES MEJOR QUE EN ALUMNO SE REALICE LA COMPARACIÓN, 
+		CON LO CUAL, RETORNARDNI YA NO ES NECESARIO*/
 		reg->lista[j + 1] = reg->lista[j];
 		j--;
 	}

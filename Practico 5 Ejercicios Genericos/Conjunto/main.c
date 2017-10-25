@@ -14,7 +14,7 @@ int main(){
 		op = menu();
 		switch(op){
 		case 1:
-			insertarUno(&conjunto1);
+			insertarUno(&conjunto1);/*SI AGREGAR YA ES RARO EN CONJUNTO, CON MAYOR RAZÓN ES ELIMINAR*/
 			break;
 		case 2:
 			insertarUno(&conjunto2);
